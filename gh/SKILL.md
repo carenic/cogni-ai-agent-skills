@@ -340,13 +340,13 @@ mindmap
 1. Verify availability and auth first: `gh --version`, then `gh auth status`.
 2. Choose the narrowest native `gh` surface before reaching for `gh api`:
    - `gh issue view/comment` for issues
-   - `gh pr view/comment/review` for pull requests and reviews
+ 
    - `gh api` only when native subcommands do not expose the needed field
 3. Prefer structured output over shell filtering:
    - use `--json`, `--jq`, or `--template` instead of `grep`/`rg`
    - use `gh api` for metadata, not ad hoc HTML scraping
 4. Query the smallest object that answers the question:
-   - issue or PR metadata before comments
+   - issue metadata before comments
 5. After each command, verify progress explicitly:
    - non-empty stdout or expected JSON field
    - no warning that changes command semantics
@@ -381,7 +381,7 @@ Example: `gh api graphql -f query='mutation($title: String!) { ... }' -F title=@
   (e.g. for visualization to generate topology data like `mermaid` `gitGraph` diagrams without cloning explicitly)
 - Prefer native JSON first:
   - `gh issue view <number> --json comments,number,title,state,author,url`
-  - `gh pr view <number> --json number,title,state,reviewDecision,url`
+  
 - Use `gh api` for objects that native subcommands do not expose cleanly:
   - `gh api repos/<owner>/<repo>/issues/<number>/comments`
 - Use `--jq` or `--template` before external filters.
@@ -427,7 +427,6 @@ Since `gh` often lacks a native `discussion` subcommand, use `gh api graphql`. A
   `gh issue comment <number> --body "..."`
 - Reply through the originating GitHub surface:
   - issue thread -> `gh issue comment`
-  - PR thread -> `gh pr comment` or `gh pr review`
   - inline review thread -> `gh api .../replies`
 - For long comments, use a HEREDOC body:
   `gh issue comment <number> --body "$(cat <<'EOF'
@@ -441,55 +440,6 @@ Since `gh` often lacks a native `discussion` subcommand, use `gh api graphql`. A
 ## GitHub Actions Runtime
 
 When executing autonomously within a GitHub Actions environment, adhere strictly to these interaction constraints:
-
-### OpenCode PR Context & Response Routing
-
-**Context & Targeting Invariants**:
-
-- **Extract Context**: Parse the `## Pull Request Context` block containing `**Base Branch:**` dynamically.
-- **Dynamic PR Targeting**: ALWAYS target this explicitly provided **Base Branch** when creating/updating PRs.
-
-**Response Detection & Routing**: Check `github.event_name` and payload to identify trigger source:
-
-- **General PR comment** (`issue_comment`):
-  - Condition: `if: ${{ github.event.issue.pull_request }}`
-  - Reply Method: `gh pr comment`
-- **Issue comment** (`issue_comment`):
-  - Condition: `if: ${{ !github.event.issue.pull_request }}`
-  - Reply Method: `gh issue comment`
-- **Inline code review** (`pull_request_review_comment`):
-  - Reply Method: `gh api repos/{owner}/{repo}/pulls/{pr}/comments/{comment_id}/replies -f body="..."`
-
-**Routing Invariants**:
-
-- **Symmetric Routing**: ALWAYS reply via the exact originating channel. NEVER cross threads.
-- Parse `github.event.comment.id` and `in_reply_to_id` to maintain thread continuity.
-
-### Branch Sync Policy (No Rebase During Runtime)
-
-When the prompt asks to "pull" or "sync with base" in GitHub Actions runtime, the
-agent MUST integrate remote changes with a merge commit workflow.
-
-- **MUST NOT** run any rebase-based update command during runtime.
-- **FORBIDDEN**: `gh pr update-branch --rebase`, `git pull --rebase`, `git rebase`,
-  or any history rewrite that changes commit SHAs.
-- **MUST** use pull-with-merge semantics: `git pull --no-rebase`.
-- **MUST** preserve remote branch compatibility for post-run auto PR/push logic.
-
-**Execution Steps (strict order)**:
-
-1. Determine PR base/head from context (`## Pull Request Context`, `gh pr view`).
-2. Ensure work is on the PR head branch (not detached HEAD).
-3. Sync head branch from remote with merge semantics: `git pull --no-rebase origin <head-branch>`.
-4. If base changes must be integrated into head, merge base explicitly:
-   `git fetch origin <base-branch> && git merge --no-ff origin/<base-branch>`.
-5. Resolve conflicts, commit merge if required, then push normally (no force).
-
-**Verification Gate (required before push)**:
-
-- Confirm no rebase command was executed in this run.
-- Confirm `git log --oneline --graph -n 10` shows merge topology (no rewritten linearized history from rebase).
-- Proceed with normal `git push` only after these checks pass.
 
 ### GitHub Runtime Decision Policy
 
@@ -532,6 +482,5 @@ reliable structured-query workflows are discovered.
 
 ## Related Skills
 
-- **gh-pr**: For detailed pull request creation, management, and review workflows.
 - **gh-run**: For interacting with GitHub Actions workflows and checking run/job status.
 - **gh-models**: For running and evaluating AI models via GitHub Models CLI.
