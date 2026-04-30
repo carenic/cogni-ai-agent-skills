@@ -603,6 +603,8 @@ a list of events in chronological order.
 - Group events logically using `section` blocks.
 - Define periods and associated events using the format
   `<time period> : <event> : <additional event>`.
+- NEVER use colons (`:`) within the text of the `<time period>`,
+  it is strictly reserved as the structural delimiter.
 
 Example with Sections and Multiple Events:
 
