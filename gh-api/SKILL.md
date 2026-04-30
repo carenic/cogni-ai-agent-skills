@@ -172,7 +172,7 @@ Use these when standard `gh` commands (like `gh pr view` or `gh issue view`) do 
 - **Generate PR Review Threads Kanban Diagram (GraphQL + jq)**:
 
   ```bash
-  gh api graphql -F owner="{owner}" -F repo="{repo}" -F number={pr_number} -f query='
+  gh api graphql -F owner="<owner>" -F repo="<repo>" -F number=<number> -f query='
   query($owner:String!, $repo:String!, $number:Int!) {
     repository(owner:$owner, name:$repo) {
       pullRequest(number:$number) {
@@ -207,7 +207,7 @@ Use these when standard `gh` commands (like `gh pr view` or `gh issue view`) do 
       "\n      path: " + .path;
 
     "---\nkanban:\n  tickInterval: 1\n---\n" +
-    "%% gh api graphql -F owner=\"{owner}\" -F repo=\"{repo}\" -F number={pr_number} ... (query above)\n" +
+    "%% gh api graphql -F owner=\"<owner>\" -F repo=\"<repo>\" -F number=<number> ... (query above)\n" +
     "kanban\n  Active\n" +
     ( [.data.repository.pullRequest.reviewThreads.nodes[] |
         select(.isResolved==false and .isOutdated==false) | kanban_card ] | join("\n") ) +
@@ -279,16 +279,17 @@ Use these when standard `gh` commands (like `gh pr view` or `gh issue view`) do 
   ```
 
 - **List Workflow Runs for a specific branch and event (REST + jq)**:
+
   ```bash
-  gh api -X GET "repos/{owner}/{repo}/actions/runs" \
-    -f branch="{branch_name}" \
+  gh api -X GET "repos/<owner>/<repo>/actions/runs" \
+    -f branch="<branch>" \
     -f event="pull_request" \
     -f per_page=10 \
     --jq '.workflow_runs[] | {id, head_branch, name, event, status, conclusion, created_at, html_url}'
   ```
 
   Note: Using `-f` implicitly changes the underlying request to POST.
-  You must specify `-X GET` explicitly or encode parameters directly into the URL like `...?branch={branch_name}&event=pull_request`.*
+  You must specify `-X GET` explicitly or encode parameters directly into the URL like `...?branch=<branch>&event=pull_request`.
 
 - **List Workflow Runs with Filters (REST)**:
 
