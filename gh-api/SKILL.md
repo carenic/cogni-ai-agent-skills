@@ -126,11 +126,41 @@ Avoid process substitution for the body; use a temporary file.
     }'
   ```
 
-## Structured Query Patterns
+## Authentication Context
 
-- Use `gh api repos/<owner>/<repo>/issues/<number>/comments` to get all comments.
-- Use `gh api repos/<owner>/<repo>/pulls/<number>/comments` for PR review comments.
-- Prefer `--jq` or `--template` before external filters.
+- `gh` uses `GH_TOKEN` or `GITHUB_TOKEN` environment variables if set.
+- By default, it uses the token stored in `~/.config/gh/hosts.yml` (from `gh auth login`).
+- Some API operations (e.g., fine-grained scopes, cross-org access) might require a Personal Access Token (PAT) with specific permissions.
+- In GitHub Actions, `secrets.GITHUB_TOKEN` is available by default but may have restricted permissions (e.g., no access to private repositories in other orgs).
+
+## Pagination & Robustness
+
+- **Pagination**: Use `--paginate` to automatically fetch all pages of results.
+  ```bash
+  gh api repos/{owner}/{repo}/issues --paginate
+  ```
+- **Common Failure Modes**:
+  - **403 Forbidden**: Often occurs when accessing logs or when the token lacks required scopes. Check `gh auth status`.
+  - **404 Not Found**: Verify the repository path and resource ID. Ensure the token has access to the target repository.
+  - **Rate Limiting**: Use `gh api rate_limit` to check your current quota.
+
+## Common API Patterns
+
+Use these when standard `gh` commands (like `gh pr view` or `gh issue view`) do not provide enough detail:
+
+- **List PR Comments**:
+  ```bash
+  gh api repos/{owner}/{repo}/pulls/{number}/comments
+  ```
+- **List PR Reviews**:
+  ```bash
+  gh api repos/{owner}/{repo}/pulls/{number}/reviews
+  ```
+- **List Issue Comments**:
+  ```bash
+  gh api repos/{owner}/{repo}/issues/{number}/comments
+  ```
+- **Filter with jq**: Prefer `--jq` or `--template` for parsing results before using external filters.
 
 ## What to Avoid
 
