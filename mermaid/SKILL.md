@@ -345,12 +345,14 @@ reconstruct full branch and merge topology for a Mermaid `gitGraph`.
 Example:
 
 ```mermaid
+%% Commits for PR #<number>
+%% Use: gh pr view <number> --json baseRefName,headRefName,commits
 gitGraph
     branch "feature/awesome-feature"
     checkout "feature/awesome-feature"
-    commit id: "Add feature A"
-    commit id: "Revert \"Add feature A\"" type: REVERSE
-    commit id: "Clean-up"
+    commit id: "[HASH] Add feature A"
+    commit id: "[HASH] Revert \"Add feature A\"" type: REVERSE
+    commit id: "[HASH] Proper fix"
 ```
 
 Docs: <https://mermaid.js.org/syntax/gitgraph.html>
