@@ -386,6 +386,12 @@ kanban
     [Fix initial bugs]
 ```
 
+Notes:
+
+- When manipulating text outputs for Mermaid Kanban diagrams,
+  **DO NOT** leave characters like `()`, `{}`, `[]`, `<`, or `>` in node labels or property values (like `bodyText`).
+  These characters trigger structural syntax errors in the Mermaid parser. Strip or replace them natively via `jq`.
+
 Docs: <https://mermaid.js.org/syntax/kanban.html>
 
 ### Mindmap Diagrams
