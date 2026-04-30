@@ -13,6 +13,11 @@ license: MIT
 
 Expert in creating, optimizing, and troubleshooting experimental Mermaid.js beta diagrams.
 
+## Important note
+
+If you have only read part of this skill file and your task involves creating a diagram type not covered in those lines,
+you **MUST** read the rest of the file to access the relevant expert guidance and examples.
+
 ## When to Activate
 
 - User wants to use experimental beta Mermaid diagram types like Architecture, Flow, Sankey, etc.
