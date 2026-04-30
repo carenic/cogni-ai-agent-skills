@@ -106,6 +106,7 @@ Avoid process substitution for the body; use a temporary file.
     }
   }'
   ```
+
 - **Create Discussion**:
   ```bash
   gh api graphql -F repositoryId="$REPO_ID" -F categoryId="$CAT_ID" \
@@ -116,6 +117,7 @@ Avoid process substitution for the body; use a temporary file.
       }
     }'
   ```
+
 - **Comment on Discussion**:
   ```bash
   gh api graphql -F discussionId="$DISCUSSION_ID" -F body=@comment.md \
