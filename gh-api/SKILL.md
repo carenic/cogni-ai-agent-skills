@@ -67,17 +67,28 @@ When using `gh api` (including `gh api graphql`), choose the correct flag for pa
 For `gh api graphql`, all fields other than `query` and `operationName` are automatically passed as GraphQL variables.
 Example: `gh api graphql -f query='mutation($title: String!) { ... }' -F title=@title.txt`
 
-## Reading Files via API (Alternative to Raw URL / curl)
+## Reading Files via API
 
-If you need to fetch from a private repository using the CLI's authentication,
+If you need to fetch from a repository using the CLI's authentication,
 use the `contents` endpoint. The response is base64 encoded.
+
+Example to fetch a file from a repository using `gh api` + `base64`:
 
 ```bash
 gh api /repos/{org}/{repo}/contents/{path/to/file.md}?ref={SHA} --jq .content | base64 -d
 ```
 
-*Note: This is the robust alternative to `curl -s https://raw.githubusercontent.com/{org}/{repo}/{SHA}/{path}`.
-It uses native GitHub CLI auth, avoiding 401s for internal repositories.*
+Example with just `gh api`:
+
+```bash
+gh api -H "Accept: application/vnd.github.raw" /repos/{org}/{repo}/contents/{path/to/file.md}?ref={SHA}
+```
+
+Notes:
+
+- Above are robust alternatives to `curl -s https://raw.githubusercontent.com/{org}/{repo}/{SHA}/{path}`.
+  It uses native GitHub CLI auth, avoiding 401s for internal repositories.
+- Especially useful when `curl` is not available or restricted.
 
 ## Discussion Patterns (via GraphQL)
 
