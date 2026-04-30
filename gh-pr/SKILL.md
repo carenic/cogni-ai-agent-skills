@@ -143,7 +143,7 @@ flowchart LR
     pr --> Checks
     pr --> Tests
     pr --> Molecule
-    pr --> cr["CodeRabbit<br>{job_id}"]:::pass
+    pr --> cr["CodeRabbit"]:::pass
 
     classDef pass fill:#d4edda,stroke:#28a745,color:#155724,stroke-width:2px;
     classDef fail fill:#f8d7da,stroke:#dc3545,color:#721c24,stroke-width:2px;
