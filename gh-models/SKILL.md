@@ -126,3 +126,8 @@ Store prompts anywhere in repo (e.g. `.github/prompts/`). Structure enables:
 - Never use `run` without corresponding eval harness.
 - Always version the exact model ID + parameters + prompt hash.
 - On any regression: root-cause via single-variable delta (change one test case or param), re-generate, re-eval.
+
+## Related Skills
+
+- **gh**: For general GitHub CLI usage (issues, PRs, and REST API).
+- **gh-run**: For interacting with GitHub Actions workflows and checking run/job status.

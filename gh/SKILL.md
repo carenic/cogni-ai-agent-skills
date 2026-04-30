@@ -568,3 +568,4 @@ reliable structured-query workflows are discovered.
 ## Related Skills
 
 - **gh-run**: For interacting with GitHub Actions workflows and checking run/job status.
+- **gh-models**: For running and evaluating AI models via GitHub Models CLI.

@@ -328,14 +328,16 @@ gitGraph
 
 **Pro-tip for accurate real-world GitGraphs**:
 
-Extract commit topologies directly using CLI tools
-to avoid manually altering the original branch logic:
+Use CLI tools to generate commit entries from real commit history instead of rewriting commit subjects by hand:
 
 - **With GitHub CLI (`gh`)**:
   `gh pr view <number> --json headRefName,baseRefName,commits`
 - **With Git (`git`)**:
   `git log origin/main..HEAD --reverse --format='commit id: "%s"'`
-  *(Note: Escape inner quotes in the output to ensure valid Mermaid bounds).*
+
+These commands provide a linear list of commits and can help seed `commit id: "..."` entries, but they do **not** reconstruct full branch and merge topology for a Mermaid `gitGraph`.
+
+*(Note: Escape inner quotes in commit subjects so the output remains valid Mermaid syntax. For example, use `sed 's/"/\\"/g'` to escape double quotes in a shell pipeline.)*
 
 Example:
 

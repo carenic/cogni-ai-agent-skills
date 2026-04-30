@@ -45,12 +45,16 @@ mindmap
 
 - **Fetching Logs for In-Progress Runs or Multiple Attempts**:
   - `gh run view --log` only fetches logs for the *latest completed* attempt and often fails on in-progress runs or expired attempts.
-  - The API endpoint `/repos/{owner}/{repo}/actions/jobs/{job_id}/logs` often fails during redirect (403 AuthenticationFailed) if called dynamically with `gh api` or curl.
-  - **Robust Solution**: Use the ZIP log endpoint which encapsulates all job logs for a specific full run attempt, even if the run is still in progress: 
+  - The API endpoint `/repos/{owner}/{repo}/actions/jobs/{job_id}/logs` often fails during
+    redirect (403 AuthenticationFailed) if called dynamically with `gh api` or curl.
+  - **Robust Solution**: Use the ZIP log endpoint which encapsulates all job logs for a specific full run attempt, even if the run is still in progress:
+
     ```bash
     gh api /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_num}/logs > logs.zip
     unzip logs.zip
     ```
+
+    *(Note: This requires `unzip` and shell redirection to be available in the environment.)*
     This produces a structure where logs are either:
     1. In a directory matching the *Job Name* (e.g. `Job Name/1_Set up job.txt`).
     2. A single raw `.txt` file at the root level prefixed with a number but suffixed with the job name (e.g. `0_copilot.txt`) for monolithic/agent runs.
@@ -74,8 +78,8 @@ mindmap
 
 ## Structured Query Patterns
 
-  - `gh run list --limit 20 --json databaseId,name,workflowName,status,conclusion,url`
-  - `gh api repos/<owner>/<repo>/actions/jobs/<job_id>`
+- `gh run list --limit 20 --json databaseId,name,workflowName,status,conclusion,url`
+- `gh api repos/<owner>/<repo>/actions/jobs/<job_id>`
 
 ## Failure Signatures
 
@@ -94,3 +98,4 @@ mindmap
 ## Related Skills
 
 - **gh**: For general GitHub CLI usage (issues, PRs, and REST API).
+- **gh-models**: For running and evaluating AI models via GitHub Models CLI.
