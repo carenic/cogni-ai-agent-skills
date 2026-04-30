@@ -54,7 +54,7 @@ When using `gh api` (including `gh api graphql`), choose the correct flag for pa
 - Use `-F` (`--field`) for **magic type conversion**:
   - **File expansion**: `-F body=@path/to/file.md` (reads file content).
   - **Typed values**: `-F is_public=true`, `-F count=42`, `-F parent=null`.
-  - **Placeholders**: `-F repo={repo}`, `-F owner={owner}`.
+  - **Placeholders**: `-F repo=<repo>`, `-F owner=<owner>`.
 - Use `-f` (`--raw-field`) for **static strings**:
   - Use this when you want the literal value.
   - **CAUTION**: `-f` DOES NOT expand `@`. Using `-f body=@file` posts the literal string "@file".
@@ -80,18 +80,18 @@ use the `contents` endpoint. The response is base64 encoded.
 Example to fetch a file from a repository using `gh api` + `base64`:
 
 ```bash
-gh api /repos/{org}/{repo}/contents/{path/to/file.md}?ref={SHA} --jq .content | base64 -d
+gh api /repos/<org>/<repo>/contents/<path/to/file.md>?ref=<SHA> --jq .content | base64 -d
 ```
 
 Example with just `gh api`:
 
 ```bash
-gh api -H "Accept: application/vnd.github.raw" /repos/{org}/{repo}/contents/{path/to/file.md}?ref={SHA}
+gh api -H "Accept: application/vnd.github.raw" /repos/<org>/<repo>/contents/<path/to/file.md>?ref=<SHA>
 ```
 
 Notes:
 
-- Above are robust alternatives to `curl -s https://raw.githubusercontent.com/{org}/{repo}/{SHA}/{path}`.
+- Above are robust alternatives to `curl -s https://raw.githubusercontent.com/<org>/<repo>/<SHA>/<path>`.
   It uses native GitHub CLI auth, avoiding 401s for internal repositories.
 - Especially useful when `curl` is not available or restricted.
 
@@ -150,7 +150,7 @@ Avoid process substitution for the body; use a temporary file.
 - **Pagination**: Use `--paginate` to automatically fetch all pages of results.
 
   ```bash
-  gh api repos/{owner}/{repo}/issues --paginate
+  gh api repos/<owner>/<repo>/issues --paginate
   ```
 
 - **Common Failure Modes**:
@@ -189,7 +189,7 @@ Use these when standard `gh` commands (like `gh pr view` or `gh issue view`) do 
         }
       }
     }
-  }' -F owner={owner} -F repo={repo} -F number={number} \
+  }' -F owner=<owner> -F repo=<repo> -F number=<number> \
   --jq '.data.repository.pullRequest.reviewThreads.nodes[]
         | select(.isResolved == false)
         | {
@@ -202,19 +202,19 @@ Use these when standard `gh` commands (like `gh pr view` or `gh issue view`) do 
 - **List PR Comments (REST)**:
 
   ```bash
-  gh api repos/{owner}/{repo}/pulls/{number}/comments
+  gh api repos/<owner>/<repo>/pulls/<number>/comments
   ```
 
 - **List PR Reviews**:
 
   ```bash
-  gh api repos/{owner}/{repo}/pulls/{number}/reviews
+  gh api repos/<owner>/<repo>/pulls/<number>/reviews
   ```
 
 - **List Issue Comments**:
 
   ```bash
-  gh api repos/{owner}/{repo}/issues/{number}/comments
+  gh api repos/<owner>/<repo>/issues/<number>/comments
   ```
 
 - **Resolve a PR Review Thread by ID (GraphQL)**:
@@ -228,7 +228,7 @@ Use these when standard `gh` commands (like `gh pr view` or `gh issue view`) do 
         isResolved
       }
     }
-  }' -F threadId={thread_id}
+  }' -F threadId=<thread_id>
   ```
 
 Notes:
@@ -237,9 +237,9 @@ Notes:
   - **With Git (`git`)**:
     `git log origin/main..HEAD --reverse --format='commit id: "%s"'`
   - **With GitHub API (`gh api`)**:
-    `gh api repos/{owner}/{repo}/pulls/{number}/commits --jq '.[] | "commit id: \"[\(.sha[0:7])] \(.commit.message | split("\n")[0] | gsub("\""; "'\''"))\""'`
+    `gh api repos/<owner>/<repo>/pulls/<number>/commits --jq '.[] | "commit id: \"[\(.sha[0:7])] \(.commit.message | split("\n")[0] | gsub("\""; "'\''"))\""'`
   - **With GitHub CLI (`gh`)**:
-    `gh pr view {number} --json headRefName,baseRefName,commits`
+    `gh pr view <number> --json headRefName,baseRefName,commits`
   - For more context, load relevant skill files when working with this type of diagrams.
 - **Filter with jq**: Prefer `--jq` or `--template` for parsing results before using external filters.
 

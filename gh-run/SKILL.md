@@ -51,7 +51,7 @@ mindmap
     use the native tool mapping directly to the PR's HEAD commit:
 
     ```bash
-    gh pr checks <pr_number> --repo <owner>/<repo>
+    gh pr checks <number> --repo <owner>/<repo>
     ```
 
     This outputs all CI/CD checks (successes, failures, skips) and provides direct URLs to the workflow jobs.
@@ -59,13 +59,13 @@ mindmap
 - **Fetching Logs for In-Progress Runs or Multiple Attempts**:
   - `gh run view --log` only fetches logs for the *latest completed* attempt and often fails on in-progress runs
     or expired attempts.
-  - The API endpoint `/repos/{owner}/{repo}/actions/jobs/{job_id}/logs` often fails during
+  - The API endpoint `/repos/<owner>/<repo>/actions/jobs/<job_id>/logs` often fails during
     redirect (403 AuthenticationFailed) if called dynamically with `gh api` or curl.
   - **Robust Solution**: Use the ZIP log endpoint which encapsulates all job logs for a specific full run attempt,
     even if the run is still in progress:
 
     ```bash
-    gh api /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_num}/logs > logs.zip
+    gh api /repos/<owner>/<repo>/actions/runs/<run_id>/attempts/<attempt_num>/logs > logs.zip
     unzip logs.zip
     ```
 

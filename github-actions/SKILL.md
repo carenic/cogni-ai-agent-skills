@@ -83,24 +83,24 @@ This skill enables autonomous diagnosis of GitHub Actions failures, preferring M
 
 ```python
 # When you have a GitHub Actions URL like:
-# https://github.com/{org}/{repo}/actions/runs/{rid}/job/{jid}
+# https://github.com/<owner>/<repo>/actions/runs/<run_id>/job/<job_id>
 
-# Extract IDs: RUN_ID={rid}, JOB_ID={jid}
+# Extract IDs: RUN_ID=<run_id>, JOB_ID=<job_id>
 
 # Get workflow run details
-github-mcp-server-actions_get(method="get_workflow_run", owner="{org}", repo="{repo}", resource_id="{rid}")
+github-mcp-server-actions_get(method="get_workflow_run", owner="<owner>", repo="<repo>", resource_id="<run_id>")
 
 # Get job details
-github-mcp-server-actions_get(method="get_workflow_job", owner="{org}", repo="{repo}", resource_id="{jid}")
+github-mcp-server-actions_get(method="get_workflow_job", owner="<owner>", repo="<repo>", resource_id="<job_id>")
 
 # Get job logs (most useful for diagnosis)
-github-mcp-server-get_job_logs(job_id={jid}, owner="{org}", repo="{repo}", return_content=true, tail_lines=100)
+github-mcp-server-get_job_logs(job_id=<job_id>, owner="<owner>", repo="<repo>", return_content=true, tail_lines=100)
 
 # List all jobs in a workflow run
-github-mcp-server-actions_list(method="list_workflow_jobs", owner="{org}", repo="{repo}", resource_id="{rid}")
+github-mcp-server-actions_list(method="list_workflow_jobs", owner="<owner>", repo="<repo>", resource_id="<run_id>")
 
 # List recent workflow runs
-github-mcp-server-actions_list(method="list_workflow_runs", owner="{org}", repo="{repo}")
+github-mcp-server-actions_list(method="list_workflow_runs", owner="<owner>", repo="<repo>")
 ```
 
 **gh CLI (fallback):**
