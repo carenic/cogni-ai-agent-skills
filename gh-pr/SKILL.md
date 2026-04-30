@@ -101,7 +101,7 @@ mindmap
     directly to the PR's HEAD commit:
 
     ```bash
-    gh pr checks <pr_number> --repo <owner>/<repo>
+    gh pr checks {pr_number} --repo {owner}/{repo}
     ```
 
   - This elegantly outputs all CI/CD checks (successes, failures,
@@ -118,32 +118,32 @@ Example:
 ```mermaid
 %% This flowchart visualizes the topology and statuses of CI/CD checks for a PR.
 %% Data for this diagram can be retrieved natively using:
-%% gh pr checks <pr_number> --repo <owner>/<repo>
+%% gh pr checks {pr_number} --repo {owner}/{repo}
 flowchart LR
-    pr(["PR #<pr_number>: <pr_title>"])
+    pr(["PR {pr_number}: {pr_title}"])
 
     subgraph Checks ["CI Format & Linting"]
         direction TB
-        c3["actionlint<br>#<job_id>"]:::pass
-        c1["link-checker<br>#<job_id>"]:::pass
-        c2["pre-commit<br>#<job_id>"]:::pass
+        c3["actionlint<br>{job_id}"]:::pass
+        c1["link-checker<br>{job_id}"]:::pass
+        c2["pre-commit<br>{job_id}"]:::pass
     end
 
     subgraph Tests ["Tests"]
         direction TB
-        t1["test-on-debian-latest<br>#<job_id>"]:::pass
+        t1["test-on-debian-latest<br>{job_id}"]:::pass
     end
 
     subgraph Molecule ["Scenarios"]
         direction TB
-        m1["default / ubuntu-latest<br>#<job_id>"]:::fail
-        m2["default / ubuntu-noble<br>#<job_id>"]:::fail
+        m1["default / ubuntu-latest<br>{job_id}"]:::fail
+        m2["default / ubuntu-noble<br>{job_id}"]:::fail
     end
 
     pr --> Checks
     pr --> Tests
     pr --> Molecule
-    pr --> cr["CodeRabbit<br>#<job_id>"]:::pass
+    pr --> cr["CodeRabbit<br>{job_id}"]:::pass
 
     classDef pass fill:#d4edda,stroke:#28a745,color:#155724,stroke-width:2px;
     classDef fail fill:#f8d7da,stroke:#dc3545,color:#721c24,stroke-width:2px;
@@ -156,14 +156,14 @@ flowchart LR
     `git log origin/main..HEAD --reverse --format='commit id: "%s"'`
   - For more context, load relevant skill files when working with this type of diagrams.
   - **With GitHub API (`gh api`)**:
-    `gh api repos/<owner>/<repo>/pulls/<number>/commits --jq '.[] | "commit id: \"[\(.sha[0:7])] \(.commit.message | split("\n")[0] | gsub("\""; "'\''"))\""'`
+    `gh api repos/{owner}/{repo}/pulls/{number}/commits --jq '.[] | "commit id: \"[\(.sha[0:7])] \(.commit.message | split("\n")[0] | gsub("\""; "'\''"))\""'`
   - **With GitHub CLI (`gh`)**:
-    `gh pr view <number> --json headRefName,baseRefName,commits`
+    `gh pr view {number} --json headRefName,baseRefName,commits`
 - **Detailed JSON Retrieval (Comments & Reviews)**:
-  - `gh pr view <number> --repo <owner>/<repo> --json comments`
-  - `gh pr view <number> --repo <owner>/<repo> --json reviews`
+  - `gh pr view {number} --repo {owner}/{repo} --json comments`
+  - `gh pr view {number} --repo {owner}/{repo} --json reviews`
 - Lightweight PR context:
-  `gh pr view <number> --json number,title,state,reviewDecision,url`
+  `gh pr view {number} --json number,title,state,reviewDecision,url`
 
 - **Listing PRs for a Specific Author**:
 
@@ -174,7 +174,7 @@ flowchart LR
 - **Checking Mergeability**:
 
   ```bash
-  gh pr view <number> --json mergeable,mergeStateStatus
+  gh pr view {number} --json mergeable,mergeStateStatus
   ```
 
 ## Interaction & Comments
@@ -224,9 +224,9 @@ with a merge commit workflow.
 
 1. Determine PR base/head from context (`## Pull Request Context`, `gh pr view`).
 2. Ensure work is on the PR head branch (not detached HEAD).
-3. Sync head branch from remote with merge semantics: `git pull --no-rebase origin <head-branch>`.
+3. Sync head branch from remote with merge semantics: `git pull --no-rebase origin {head-branch}`.
 4. If base changes must be integrated into head, merge base explicitly:
-   `git fetch origin <base-branch> && git merge --no-ff origin/<base-branch>`.
+   `git fetch origin {base-branch} && git merge --no-ff origin/{base-branch}`.
 5. Resolve conflicts, commit merge if required, then push normally (no force).
 
 **Verification Gate (required before push)**:
@@ -237,10 +237,10 @@ with a merge commit workflow.
 
 ## Failure Signatures
 
-- **"Draft PRs cannot be merged"**: Use `gh pr ready <number>` first.
+- **"Draft PRs cannot be merged"**: Use `gh pr ready {number}` first.
 - **"Permission denied"**: Check `gh auth status`. You may need to request additional scopes.
 - **"PR already exists"**: If creating a PR fails because one exists for the branch, use
-  `gh pr list --head <branch>` to find it and `gh pr edit` if updates are needed.
+  `gh pr list --head {branch}` to find it and `gh pr edit` if updates are needed.
 
 ## What to Avoid
 

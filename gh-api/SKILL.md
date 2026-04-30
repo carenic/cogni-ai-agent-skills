@@ -237,9 +237,9 @@ Notes:
   - **With Git (`git`)**:
     `git log origin/main..HEAD --reverse --format='commit id: "%s"'`
   - **With GitHub API (`gh api`)**:
-    `gh api repos/<owner>/<repo>/pulls/<number>/commits --jq '.[] | "commit id: \"[\(.sha[0:7])] \(.commit.message | split("\n")[0] | gsub("\""; "'\''"))\""'`
+    `gh api repos/{owner}/{repo}/pulls/{number}/commits --jq '.[] | "commit id: \"[\(.sha[0:7])] \(.commit.message | split("\n")[0] | gsub("\""; "'\''"))\""'`
   - **With GitHub CLI (`gh`)**:
-    `gh pr view <number> --json headRefName,baseRefName,commits`
+    `gh pr view {number} --json headRefName,baseRefName,commits`
   - For more context, load relevant skill files when working with this type of diagrams.
 - **Filter with jq**: Prefer `--jq` or `--template` for parsing results before using external filters.
 
