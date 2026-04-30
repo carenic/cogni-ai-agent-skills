@@ -427,6 +427,7 @@ Since `gh` often lacks a native `discussion` subcommand, use `gh api graphql`. A
   `gh issue comment <number> --body "..."`
 - Reply through the originating GitHub surface:
   - issue thread -> `gh issue comment`
+  - pull request comment/review thread -> see `gh-pr` for PR routing
   - inline review thread -> `gh api .../replies`
 - For long comments, use a HEREDOC body:
   `gh issue comment <number> --body "$(cat <<'EOF'
