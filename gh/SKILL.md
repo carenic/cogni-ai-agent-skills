@@ -186,42 +186,7 @@ mindmap
       list
         List organizations
     pr
-      checkout
-        Check out in git
-      checks
-        Show CI status
-      close
-        Close a PR
-      comment
-        Add a comment
-      create
-        Create a pull request
-      diff
-        View changes
-      edit
-        Edit a PR
-      list
-        List pull requests
-      lock
-        Lock conversation
-      merge
-        Merge a PR
-      ready
-        Mark as ready for review
-      reopen
-        Reopen a PR
-      revert
-        Revert a PR
-      review
-        Add a review
-      status
-        Show status
-      unlock
-        Unlock conversation
-      update-branch
-        Update branch
-      view
-        View a PR
+      (Load gh-pr skill if required)
     project
       close
         Close a project
@@ -567,5 +532,6 @@ reliable structured-query workflows are discovered.
 
 ## Related Skills
 
+- **gh-pr**: For detailed pull request creation, management, and review workflows.
 - **gh-run**: For interacting with GitHub Actions workflows and checking run/job status.
 - **gh-models**: For running and evaluating AI models via GitHub Models CLI.

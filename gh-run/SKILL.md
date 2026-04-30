@@ -107,4 +107,5 @@ mindmap
 ## Related Skills
 
 - **gh**: For general GitHub CLI usage (issues, PRs, and REST API).
+- **gh-pr**: For detailed pull request creation, management, and review workflows.
 - **gh-models**: For running and evaluating AI models via GitHub Models CLI.
