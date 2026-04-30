@@ -81,6 +81,12 @@ mindmap
   To quickly identify only the failing jobs for a specific PR:
 
   ```bash
+  gh pr checks <number> --repo <owner>/<repo> | grep fail
+  ```
+
+  Alternatively:
+
+  ```
   gh pr checks <number> --repo <owner>/<repo> --json name,conclusion -q '.[] | select(.conclusion == "FAILURE") | .name'
   ```
 
