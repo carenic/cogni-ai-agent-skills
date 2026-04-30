@@ -50,7 +50,3 @@ time timeout 300s build_script.sh
 - Set `timeout` based on expected runtime plus buffer
 - Use `time` for all long operations to track performance
 - `timeout --kill-after=5s 30s` for forceful termination if needed
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

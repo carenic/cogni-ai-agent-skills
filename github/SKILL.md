@@ -40,7 +40,3 @@ and you need to retrieve the diff or patch content for processing.
 ## Related Skills
 
 - **gh-pr**: For detailed pull request creation, management, and review workflows using GitHub CLI.
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

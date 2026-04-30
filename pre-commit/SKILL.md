@@ -331,7 +331,3 @@ pre-commit run yamlfix --all-files
 - Hooks run sequentially; large repos may experience slower commit times.
 - Some hooks (e.g., yamlfix) may conflict with manual formatting preferences.
 - Custom local hooks require executable scripts in repository; not portable across forks without dependencies.
-
-## Maintenance
-
-Note that this file should be updated if outdated or if steps/examples are not working.

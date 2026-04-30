@@ -40,7 +40,3 @@ This is useful for identifying slow tasks and optimizing your automation.
   [defaults]
   callbacks_enabled = ansible.posix.profile_tasks
   ```
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

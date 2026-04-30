@@ -484,11 +484,6 @@ When executing autonomously within a GitHub Actions environment, adhere strictly
 - Do not create temp files for comments or analysis when direct `gh`
   subcommands are available.
 
-## Maintenance
-
-Update this skill when new `gh` failure signatures, routing patterns, or
-reliable structured-query workflows are discovered.
-
 ## Related Skills
 
 - **gh-api**: For authenticated REST and GraphQL API requests.

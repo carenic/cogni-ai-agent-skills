@@ -518,7 +518,3 @@ unzip file.zip || python3 -m zipfile -e file.zip .
 - **Handle errors**: Always have a fallback plan
 
 Commands fail for many reasons - most are fixable!
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

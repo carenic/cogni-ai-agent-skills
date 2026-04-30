@@ -754,11 +754,6 @@ mindmap
         id_pit2_fix["Fix: Escape as '\,'"]
 ```
 
-## Maintenance
-
-Note that this file should be updated if Mermaid syntax changes or new stable features land.
-Separate `mermaid-beta/SKILL.md` is maintained for experimental diagrams.
-
 ## Related Skills
 
 - **gh-api**: For retrieving repository data (commits, PR reviews, etc.) to generate Mermaid diagrams via GitHub CLI.

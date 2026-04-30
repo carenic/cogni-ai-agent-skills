@@ -102,7 +102,3 @@ When creating or updating a skill file, ensure the following format:
   (one precise, activation-triggering sentence explaining exactly what the skill
   does and when Copilot should load it). Include `license` only if needed. YAML
   must pass all repository validation and linting rules.
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

@@ -99,7 +99,3 @@ license: MIT
 - For very large instances, split into staged models or use external data generators.
 - Safety-critical scheduling: always add explicit resource bounds and
   post-solution validation predicates.
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

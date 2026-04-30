@@ -340,7 +340,3 @@ VIMEOF
 - [Vim Ex Mode Documentation](https://vimhelp.org/)
 - [Vim Q&A](https://vi.stackexchange.com/)
 - [Learning the vi Editor/Vim/Modes](https://en.wikibooks.org/wiki/Learning_the_vi_Editor/Vim/Modes#Ex-mode)
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

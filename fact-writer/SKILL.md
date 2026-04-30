@@ -57,7 +57,3 @@ Guidance for structuring and maintaining verifiable project fact files. Use this
 
 - [mermaid](../mermaid/SKILL.md)
 - [mermaid-beta](../mermaid-beta/SKILL.md)
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.
