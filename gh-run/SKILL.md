@@ -45,16 +45,17 @@ mindmap
 
 ## Workflow Run Diagnostics
 
-- **Checking Runs for a Pull Request**:
-  - Instead of parsing commit hashes or wrestling with `gh run list --branch <branch_name>`
-    (which lacks branch filtering in newer versions or gets complicated),
-    use the native tool mapping directly to the PR's HEAD commit:
+- **Checking Latest Runs for a Pull Request**:
+  - Use the native tool mapping directly to the PR's HEAD commit to elegantly output standard CI/CD checks (successes, failures, skips) and obtain direct URLs to workflow jobs:
 
     ```bash
     gh pr checks <number> --repo <owner>/<repo>
     ```
 
-    This outputs all CI/CD checks (successes, failures, skips) and provides direct URLs to the workflow jobs.
+  - **Limitation**: `gh pr checks` is fast but only evaluates the *latest* runs on the HEAD commit.
+    It completely misses manually triggered (`workflow_dispatch`) or comment-triggered (`issue_comment`) agent runs.
+  - **Workaround**: To find **all** workflow runs robustly associated with a PR (including custom actions and agent triggers),
+    you must match the PR's `headRefName` OR `title` via the API. Refer to the `gh-api` skill for exactly how to query the `/actions/runs` endpoint robustly for this purpose.
 
 - **Fetching Logs for In-Progress Runs or Multiple Attempts**:
   - `gh run view --log` only fetches logs for the *latest completed* attempt and often fails on in-progress runs
