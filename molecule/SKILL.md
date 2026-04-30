@@ -4,8 +4,9 @@ description: >-
   How to run and manage Molecule tests for Ansible roles and playbooks.
 
   Maintained at: <https://github.com/Cogni-AI-OU/cogni-ai-agent-skills>
-
+license: MIT
 ---
+<!-- markdownlint-disable MD003 MD013 MD022 MD023 MD026 MD031 MD032 MD041 -->
 # Molecule Testing
 
 ## When to Activate
@@ -59,7 +60,3 @@ If you encounter problems or hangs during `molecule test`:
   Python but Ansible still cannot import it, check `ansible --version` to identify the interpreter in use. In
   Codespaces/devcontainers, Ansible may run from a pipx-managed environment, so install controller-side libraries there as
   well, for example with `pipx inject ansible -r .devcontainer/requirements-ansible.txt`.
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

@@ -5,7 +5,7 @@ description: >-
 
   Maintained at: <https://github.com/Cogni-AI-OU/cogni-ai-agent-skills>
 license: MIT
-
+<!-- markdownlint-disable MD003 MD013 MD022 MD023 MD026 MD031 MD032 MD041 -->
 ---
 # Context-Aware Operations Skill
 
@@ -373,7 +373,3 @@ sed -n "${current},$((current + chunk_size))p" file.txt
 - **Iterate**: You can always come back for more details if needed
 
 Your context window is precious - use it wisely!
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

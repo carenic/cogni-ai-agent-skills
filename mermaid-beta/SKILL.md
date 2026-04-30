@@ -362,7 +362,3 @@ mindmap
         ::icon(fa fa-flask)
         "Fix: Check official docs for changes"
 ```
-
-## Maintenance
-
-Note that this file should be updated if Mermaid syntax changes or new beta shapes are stabilized.

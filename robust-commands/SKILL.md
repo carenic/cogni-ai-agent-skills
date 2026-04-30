@@ -5,8 +5,8 @@ description: >-
 
   Maintained at: <https://github.com/Cogni-AI-OU/cogni-ai-agent-skills>
 license: MIT
-
 ---
+<!-- markdownlint-disable MD003 MD013 MD022 MD023 MD026 MD031 MD032 MD041 -->
 # Robust Command Execution Skill
 
 This skill provides patterns for executing commands with automatic error recovery,
@@ -518,7 +518,3 @@ unzip file.zip || python3 -m zipfile -e file.zip .
 - **Handle errors**: Always have a fallback plan
 
 Commands fail for many reasons - most are fixable!
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

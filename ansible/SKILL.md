@@ -5,8 +5,9 @@ description: >-
 
   Maintained at: <https://github.com/Cogni-AI-OU/cogni-ai-agent-skills>
 license: MIT
-
 ---
+<!-- markdownlint-disable MD003 MD013 MD022 MD023 MD026 MD031 MD032 MD041 -->
+
 # Ansible Operations
 
 ## When to Activate
@@ -39,7 +40,3 @@ This is useful for identifying slow tasks and optimizing your automation.
   [defaults]
   callbacks_enabled = ansible.posix.profile_tasks
   ```
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

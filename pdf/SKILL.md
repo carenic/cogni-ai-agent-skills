@@ -1,5 +1,4 @@
 <!-- markdownlint-disable MD003 MD022 MD026 MD041 -->
-
 ---
 name: pdf
 description: >-
@@ -100,7 +99,3 @@ Confirm: file size decreased, page count unchanged, page dimensions preserved.
 - Running Ghostscript first — it rewrites the entire document and cannot do object-level edits
 - Using `pdfcpu` or `exiftool` alone — insufficient object-level control
 - Skipping the inspection step — always identify bloat sources before attempting reduction
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

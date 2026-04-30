@@ -227,7 +227,3 @@ Replace verbose GitHub Actions expressions with a centralized `github-script` bl
 2. **Require Authentication for External Repo Access**: The default `GITHUB_TOKEN` is
    scoped only to the current repository. To access other repos, configure a PAT
    and pass it to `github-token`.
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

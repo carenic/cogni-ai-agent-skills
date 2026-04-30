@@ -1,8 +1,12 @@
-<!-- markdownlint-disable MD003 MD022 MD026 MD041 MD013 -->
 ---
 name: minizinc
-description: Expert MiniZinc modeling for constraint satisfaction and combinatorial problems.
+description: >-
+  Expert MiniZinc modeling for constraint satisfaction and combinatorial problems.
+
+  Maintained at: <https://github.com/Cogni-AI-OU/cogni-ai-agent-skills>
+license: MIT
 ---
+<!-- markdownlint-disable MD003 MD013 MD022 MD023 MD026 MD031 MD032 MD041 -->
 
 # MiniZinc Modeling
 

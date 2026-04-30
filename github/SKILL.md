@@ -1,9 +1,12 @@
-<!-- markdownlint-disable MD003 MD022 MD026 MD041 -->
 ---
 name: github
 description: >-
   Provides guidance on GitHub specific features, pull requests viewing modes, and collaborative practices.
+
+  Maintained at: <https://github.com/Cogni-AI-OU/cogni-ai-agent-skills>
+license: MIT
 ---
+<!-- markdownlint-disable MD003 MD013 MD022 MD023 MD026 MD031 MD032 MD041 -->
 # GitHub Skill
 
 Guidance on interacting with GitHub features, specifically around Pull Requests and diff viewing.

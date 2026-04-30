@@ -1,5 +1,4 @@
 ---
-<!-- markdownlint-disable MD003 MD022 MD026 MD041 -->
 name: mermaid
 description: >-
   Expert guide for creating, optimizing, troubleshooting, and maintaining **stable** Mermaid.js diagrams (v11+).
@@ -754,11 +753,6 @@ mindmap
       ::icon(fa fa-minus)
         id_pit2_fix["Fix: Escape as '\,'"]
 ```
-
-## Maintenance
-
-Note that this file should be updated if Mermaid syntax changes or new stable features land.
-Separate `mermaid-beta/SKILL.md` is maintained for experimental diagrams.
 
 ## Related Skills
 

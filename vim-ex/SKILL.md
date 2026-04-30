@@ -4,8 +4,9 @@ description: >-
   How to use Ex mode in Vim for non-interactive file editing (e.g., complex text substitution, deleting lines, file parsing, wrapping text, sorting lines).
 
   Maintained at: <https://github.com/Cogni-AI-OU/cogni-ai-agent-skills>
-
+license: MIT
 ---
+<!-- markdownlint-disable MD003 MD013 MD022 MD023 MD026 MD031 MD032 MD041 -->
 # File Editing with Ex Mode
 
 `ex` is the line-editor mode of Vim, which is useful for non-interactive file editing in shell scripts
@@ -339,7 +340,3 @@ VIMEOF
 - [Vim Ex Mode Documentation](https://vimhelp.org/)
 - [Vim Q&A](https://vi.stackexchange.com/)
 - [Learning the vi Editor/Vim/Modes](https://en.wikibooks.org/wiki/Learning_the_vi_Editor/Vim/Modes#Ex-mode)
-
-## Maintenance
-
-Note that this file should be updated if outdated or steps/examples are not working.

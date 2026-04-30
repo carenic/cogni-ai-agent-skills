@@ -1,11 +1,14 @@
-<!-- markdownlint-disable MD003 MD022 MD026 MD041 -->
 ---
 name: gh
 description: >-
   Use when planning or executing GitHub CLI (`gh`) commands for issues, pull
   requests, workflow runs, reviews, or API queries, especially in restricted
   shells where structured output and fallback choice matter.
+
+  Maintained at: <https://github.com/Cogni-AI-OU/cogni-ai-agent-skills>
+license: MIT
 ---
+<!-- markdownlint-disable MD003 MD013 MD022 MD023 MD026 MD031 MD032 MD041 -->
 # gh Skill
 
 Use `gh` as a structured client first. Prefer native fields, explicit routing,
@@ -420,11 +423,6 @@ When executing autonomously within a GitHub Actions environment, adhere strictly
 - Do not retry the same `gh` command shape after semantic warnings.
 - Do not create temp files for comments or analysis when direct `gh`
   subcommands are available.
-
-## Maintenance
-
-Update this skill when new `gh` failure signatures, routing patterns, or
-reliable structured-query workflows are discovered.
 
 ## Related Skills
 

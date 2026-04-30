@@ -1,11 +1,13 @@
-<!-- markdownlint-disable MD003 MD022 MD026 MD041 -->
 ---
 name: git-expert
 description: >-
   Advanced Git operations including interactive rebasing, reflog recovery, bisecting,
   complex conflict resolution, and history manipulation.
 
+  Maintained at: <https://github.com/Cogni-AI-OU/cogni-ai-agent-skills>
+license: MIT
 ---
+<!-- markdownlint-disable MD003 MD013 MD022 MD023 MD026 MD031 MD032 MD041 -->
 
 # Advanced Git Operations
 
