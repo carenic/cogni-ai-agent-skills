@@ -165,6 +165,27 @@ Avoid process substitution for the body; use a temporary file.
 
 Use these when standard `gh` commands (like `gh pr view` or `gh issue view`) do not provide enough detail:
 
+- **Generate PR Review Threads Kanban Diagram (GraphQL + jq)**:
+
+  ```bash
+  gh api graphql -F owner="{owner}" -F repo="{repo}" -F number={pr_number} -f query='
+  query($owner:String!, $repo:String!, $number:Int!) {
+    repository(owner:$owner, name:$repo) {
+      pullRequest(number:$number) {
+        reviewThreads(first:100) {
+          nodes {
+            id
+            isResolved
+            comments(first:1) {
+              nodes { author { login } body }
+            }
+          }
+        }
+      }
+    }
+  }' --jq '"---\nkanban:\n  tickInterval: 1\n---\nkanban\n  Unresolved\n" + ( [.data.repository.pullRequest.reviewThreads.nodes[] | select(.isResolved==false) | "    [" + (.comments.nodes[0].body | gsub("\n"; " ") | gsub("\\["; "(") | gsub("\\]"; ")") | gsub("\""; "'\''") | if length > 60 then .[0:57] + "..." else . end) + "]\n      id: " + .id + "\n      assigned: " + .comments.nodes[0].author.login ] | join("\n") ) + "\n  Resolved\n" + ( [.data.repository.pullRequest.reviewThreads.nodes[] | select(.isResolved==true) | "    [" + (.comments.nodes[0].body | gsub("\n"; " ") | gsub("\\["; "(") | gsub("\\]"; ")") | gsub("\""; "'\''") | if length > 60 then .[0:57] + "..." else . end) + "]\n      id: " + .id + "\n      assigned: " + .comments.nodes[0].author.login ] | join("\n") )'
+  ```
+
 - **List Unresolved PR Inline Review Comments (GraphQL)**:
 
   ```bash
