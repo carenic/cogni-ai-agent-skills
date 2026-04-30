@@ -95,6 +95,7 @@ mindmap
 
 ## Structured Query Patterns
 
+- `gh run list --repo <owner>/<repo>`
 - `gh run list --limit 20 --json databaseId,name,workflowName,status,conclusion,url`
 - `gh api repos/<owner>/<repo>/actions/jobs/<job_id>`
 
