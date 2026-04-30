@@ -103,16 +103,12 @@ mindmap
 ## Pull Request Diagnostics & Checks
 
 - **Checking Runs for a Pull Request**:
-  - Instead of parsing commit hashes or wrestling with
-    `gh run list --branch <branch_name>`, use the native tool mapping
-    directly to the PR's HEAD commit:
-
-    ```bash
-    gh pr checks <number> --repo <owner>/<repo>
-    ```
-
-  - This elegantly outputs all CI/CD checks (successes, failures,
-    skips) and provides direct URLs to the workflow jobs.
+  - `gh pr checks <number> --repo <owner>/<repo>` is the quickest way to map checks directly to the PR's HEAD commit.
+    This outputs standard CI/CD checks (successes, failures, skips) and provides direct URLs to the workflow jobs.
+  - **Limitation**: `gh pr checks` *only* evaluates the HEAD commit.
+    It completely misses manually triggered (`workflow_dispatch`) or comment-triggered (`issue_comment`) agent runs.
+  - **Workaround**: To comprehensively fetch *all* workflow runs associated with a PR (including custom actions and agentic runs),
+    refer to the `gh-api` skill for instructions on using `gh api` to query by branch and display title.
 
 ### Visualizing PR Checks
 
