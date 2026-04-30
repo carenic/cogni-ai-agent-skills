@@ -187,7 +187,8 @@ Use these when standard `gh` commands (like `gh pr view` or `gh issue view`) do 
     }
   }' --jq '
     def clean_text:
-      gsub("\n"; " ") | gsub("\\["; "") | gsub("\\]"; "") | gsub("\\("; "") | gsub("\\)"; "") | gsub("\\{"; "") | gsub("\\}"; "") | gsub("<"; "") | gsub(">"; "") | gsub("#"; "") | gsub("\""; "´");
+      gsub("\n"; " ") | gsub("\\["; "") | gsub("\\]"; "") | gsub("\\("; "") | gsub("\\)"; "") |
+      gsub("\\{"; "") | gsub("\\}"; "") | gsub("<"; "") | gsub(">"; "") | gsub("#"; "") | gsub("\""; "´");
 
     def format_title:
       .comments.nodes[0].bodyText | split("\n")[0] | clean_text | split(" ")[0:5] | join(" ") + "...";
@@ -196,18 +197,27 @@ Use these when standard `gh` commands (like `gh pr view` or `gh issue view`) do 
       .comments.nodes[0].bodyText | clean_text | if length > 80 then .[0:77] + "..." else . end;
 
     def kanban_card:
-      "    [" + format_title + "]\n      bodyText: " + format_body + "\n      id: " + .id + "\n      assigned: " + .comments.nodes[0].author.login + "\n      authorAssociation: " + .comments.nodes[0].authorAssociation + "\n      path: " + .path;
+      "    [" + format_title + "]\n      bodyText: " + format_body + "\n      id: " + .id +
+      "\n      assigned: " + .comments.nodes[0].author.login +
+      "\n      authorAssociation: " + .comments.nodes[0].authorAssociation +
+      "\n      path: " + .path;
 
-    "---\nkanban:\n  tickInterval: 1\n---\n%% gh api graphql -F owner=\"{owner}\" -F repo=\"{repo}\" -F number={pr_number} ... (query above)\nkanban\n  Active\n" +
-    ( [.data.repository.pullRequest.reviewThreads.nodes[] | select(.isResolved==false and .isOutdated==false) | kanban_card ] | join("\n") ) +
+    "---\nkanban:\n  tickInterval: 1\n---\n" +
+    "%% gh api graphql -F owner=\"{owner}\" -F repo=\"{repo}\" -F number={pr_number} ... (query above)\n" +
+    "kanban\n  Active\n" +
+    ( [.data.repository.pullRequest.reviewThreads.nodes[] |
+        select(.isResolved==false and .isOutdated==false) | kanban_card ] | join("\n") ) +
     "\n  Outdated\n" +
-    ( [.data.repository.pullRequest.reviewThreads.nodes[] | select(.isResolved==false and .isOutdated==true) | kanban_card ] | join("\n") ) +
+    ( [.data.repository.pullRequest.reviewThreads.nodes[] |
+        select(.isResolved==false and .isOutdated==true) | kanban_card ] | join("\n") ) +
     "\n  Resolved\n" +
-    ( [.data.repository.pullRequest.reviewThreads.nodes[] | select(.isResolved==true) | kanban_card ] | join("\n") )
+    ( [.data.repository.pullRequest.reviewThreads.nodes[] |
+        select(.isResolved==true) | kanban_card ] | join("\n") )
   '
   ```
 
-  Use it when you need a visual overview of PR review threads categorized by status (active, outdated, resolved) with metadata like author and file path.
+  Use it when you need a visual overview of PR review threads categorized by status
+  (active, outdated, resolved) with metadata like author and file path.
 
 - **List Unresolved PR Inline Review Comments (GraphQL)**:
 
@@ -243,7 +253,8 @@ Use these when standard `gh` commands (like `gh pr view` or `gh issue view`) do 
           }'
   ```
 
-  Used it when you need a structured list of all unresolved inline review comments on a PR, including their file paths and whether they are outdated.
+  Used it when you need a structured list of all unresolved inline review comments on a PR,
+  including their file paths and whether they are outdated.
 
 - **List PR Comments (REST)**:
 
@@ -283,7 +294,8 @@ Notes:
   - **With Git (`git`)**:
     `git log origin/main..HEAD --reverse --format='commit id: "%s"'`
   - **With GitHub API (`gh api`)**:
-    `gh api repos/<owner>/<repo>/pulls/<number>/commits --jq '.[] | "commit id: \"[\(.sha[0:7])] \(.commit.message | split("\n")[0] | gsub("\""; "'\''"))\""'`
+    `gh api repos/<owner>/<repo>/pulls/<number>/commits \`
+    `--jq '.[] | "commit id: \"[\(.sha[0:7])] \(.commit.message | split("\n")[0] | gsub("\""; "'\''"))\""'`
   - **With GitHub CLI (`gh`)**:
     `gh pr view <number> --json headRefName,baseRefName,commits`
   - For more context, load relevant skill files when working with this type of diagrams.

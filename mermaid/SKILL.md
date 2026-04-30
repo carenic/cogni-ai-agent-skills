@@ -31,10 +31,6 @@ you **MUST** read the rest of the file to access the relevant expert guidance an
 - User requests visualization of processes, architecture, sequences, data flows,
   timelines, or user journeys.
 
-## Related Skills
-
-- **mermaid-beta**: Guide for experimental and beta Mermaid.js diagram types.
-
 ## Related Instructions
 
 - **mermaid.instructions.md**: Formatting standards, best
@@ -763,3 +759,8 @@ mindmap
 
 Note that this file should be updated if Mermaid syntax changes or new stable features land.
 Separate `mermaid-beta/SKILL.md` is maintained for experimental diagrams.
+
+## Related Skills
+
+- **gh-api**: For retrieving repository data (commits, PR reviews, etc.) to generate Mermaid diagrams via GitHub CLI.
+- **mermaid-beta**: Guide for experimental and beta Mermaid.js diagram types.
