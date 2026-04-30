@@ -331,10 +331,13 @@ gitGraph
 
 Use CLI tools to generate commit entries from real commit history instead of rewriting commit subjects by hand:
 
-- **With GitHub CLI (`gh`)**:
-  `gh pr view <number> --json headRefName,baseRefName,commits`
 - **With Git (`git`)**:
   `git log origin/main..HEAD --reverse --format='commit id: "%s"'`
+- **With GitHub API (`gh api`)**:
+  `gh api repos/<owner>/<repo>/pulls/<number>/commits`
+- **With GitHub CLI (`gh`)**:
+  `gh pr view <number> --json headRefName,baseRefName,commits`
+- For more context, load relevant skill files when working with this type of diagrams.
 
 These commands provide a linear list of commits and can help seed `commit id: "..."` entries, but they do **not**
 reconstruct full branch and merge topology for a Mermaid `gitGraph`.
@@ -346,7 +349,6 @@ Example:
 
 ```mermaid
 %% Commits for PR #<number>
-%% Use: gh pr view <number> --json baseRefName,headRefName,commits
 gitGraph
     branch "feature/awesome-feature"
     checkout "feature/awesome-feature"
@@ -354,6 +356,10 @@ gitGraph
     commit id: "[HASH] Revert \"Add feature A\"" type: REVERSE
     commit id: "[HASH] Proper fix"
 ```
+
+Notes:
+
+- Escape inner quotes in commit subjects so the output remains valid Mermaid syntax.
 
 Docs: <https://mermaid.js.org/syntax/gitgraph.html>
 
