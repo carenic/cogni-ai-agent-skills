@@ -2,13 +2,11 @@
 ---
 name: gh-api
 description: >-
-  Use when planning or executing GitHub CLI (`gh api` and `gh api graphql`) commands for authenticated API requests,
-  especially for resources not covered by native subcommands.
+  Use when planning or executing advanced GitHub CLI (`gh api`) queries and mutations via REST or GraphQL.
 ---
 # gh-api Skill
 
-Use `gh api` and `gh api graphql` to interact with GitHub's REST and GraphQL APIs. Prefer structured output, explicit
-field types, and bounded fallbacks over brittle shell post-processing.
+Use `gh api` and `gh api graphql` when standard `gh` subcommands do not expose the required functionality or metadata.
 
 ## Mindmap of Commands
 
@@ -38,6 +36,11 @@ mindmap
 
 ## When to Activate
 
+- User specifically asks to hit GitHub API endpoints via `gh api`.
+- Task requires fetching data unavailable in native commands (`gh pr view`, `gh issue view`).
+- Task involves GitHub Discussions (requires GraphQL).
+- Task involves reading file contents directly from the API when `curl` is missing or disallowed.
+- Need to perform precise, authenticated curl-like interactions with GitHub.
 - Task requires interacting with GitHub resources not supported by native `gh` subcommands
   (e.g., repository variables, environment secrets, discussions).
 - Task requires complex GraphQL queries or mutations.
@@ -58,13 +61,23 @@ When using `gh api` (including `gh api graphql`), choose the correct flag for pa
 
 **Large Bodies & Files**:
 - Prefer `-F body=@path/to/file.md` for large content.
-- **Process Substitution**: Avoid `-F body=@<(...)` in `gh api`; it is brittle across shells.
-  Write to a temporary file first, then use `-F body=@tempfile`.
+- **Process Substitution**: Avoid `-F body=@<(...)` in `gh api`; it is brittle across shells. Write to a temporary file first, then use `-F body=@tempfile`.
 
 **GraphQL Variables**:
 For `gh api graphql`, all fields other than `query` and `operationName` are automatically passed as GraphQL variables.
-Example:
-`gh api graphql -f query='mutation($title: String!) { ... }' -F title=@title.txt`
+Example: `gh api graphql -f query='mutation($title: String!) { ... }' -F title=@title.txt`
+
+## Reading Files via API (Alternative to Raw URL / curl)
+
+If you need to fetch from a private repository using the CLI's authentication,
+use the `contents` endpoint. The response is base64 encoded.
+
+```bash
+gh api /repos/{org}/{repo}/contents/{path/to/file.md}?ref={SHA} --jq .content | base64 -d
+```
+
+*Note: This is the robust alternative to `curl -s https://raw.githubusercontent.com/{org}/{repo}/{SHA}/{path}`.
+It uses native GitHub CLI auth, avoiding 401s for internal repositories.*
 
 ## Discussion Patterns (via GraphQL)
 
@@ -117,6 +130,6 @@ Avoid process substitution for the body; use a temporary file.
 
 ## Related Skills
 
-- **gh**: For general GitHub CLI usage (issues, PRs).
-- **gh-run**: For interacting with GitHub Actions workflows.
-- **github-script**: For complex automation using `actions/github-script`.
+- **gh**: For standard GitHub CLI operations (issues, repos, prs).
+- **gh-pr**: For pull request tracking and management.
+- **gh-run**: For workflow runs, jobs, logs, and diagnostic tools.
