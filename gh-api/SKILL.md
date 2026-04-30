@@ -155,6 +155,23 @@ Avoid process substitution for the body; use a temporary file.
 - In GitHub Actions, `secrets.GITHUB_TOKEN` is available by default but may have restricted permissions
   (e.g., no access to private repositories in other orgs).
 
+## Fetching PR Workflow Runs via API
+
+Due to `gh pr checks` limitation to the current HEAD commit which frequently misses manually
+triggered (`workflow_dispatch`) or comment-triggered (`issue_comment`) runs, the most robust
+way to list all workflow runs associated with a Pull Request is via the REST API.
+
+You can query the `/actions/runs` endpoint filtering by both the PR branch name and the PR title
+(since PR comment triggers map the PR title to `display_title`):
+
+```bash
+branch_name=$(gh pr view <pr_number> --repo <owner>/<repo> --json headRefName -q .headRefName)
+pr_title=$(gh pr view <pr_number> --repo <owner>/<repo> --json title -q .title)
+
+gh api repos/<owner>/<repo>/actions/runs --paginate \
+  -q ".workflow_runs[] | select((.head_branch == \"$branch_name\" or .display_title == \"$pr_title\")) | {id: .id, name: .name, status: .status, conclusion: .conclusion, event: .event}"
+```
+
 ## Pagination & Robustness
 
 - **Pagination**: Use `--paginate` to automatically fetch all pages of results.
