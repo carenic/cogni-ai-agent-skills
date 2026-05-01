@@ -170,5 +170,5 @@ check run IDs associated with the PR's head commit.
 
 ## Related Skills
 
-- **[gh-pr](../gh-pr/SKILL.md)**: For low-level `gh pr` command operations.
-- **[github](../github/SKILL.md)**: For web-based PR interactions (.diff, .patch).
+- `gh-pr`: For low-level `gh pr` command operations.
+- `github`: For web-based PR interactions (.diff, .patch).
