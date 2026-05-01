@@ -307,6 +307,12 @@ Use these when standard `gh` commands (like `gh pr view` or `gh issue view`) do 
   gh api repos/<owner>/<repo>/issues/<number>/comments
   ```
 
+- **List Check Run Annotations (REST)**:
+
+  ```bash
+  gh api repos/<owner>/<repo>/check-runs/<check_run_id>/annotations
+  ```
+
 - **List Workflow Runs for a specific branch and event (REST + jq)**:
 
   ```bash
