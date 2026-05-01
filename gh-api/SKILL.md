@@ -1,7 +1,7 @@
 ---
 name: gh-api
 description: >-
-  You must load this skill when working with `gh api` command. Use when planning or executing advanced GitHub CLI (`gh api`) queries and mutations via REST or GraphQL.
+  Advanced GitHub CLI (`gh api`) queries and mutations via REST or GraphQL.
 ---
 # gh-api Skill
 

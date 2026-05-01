@@ -1,7 +1,7 @@
 ---
 name: gh-pr
 description: >-
-  You must load this skill when working with `gh pr` command. Use when planning or executing GitHub CLI (`gh pr`) commands for pull requests, reviews, PR checks, and PR branches.
+  GitHub CLI (`gh pr`) operations for pull requests, reviews, PR checks, and PR branches.
 ---
 # gh-pr Skill
 
