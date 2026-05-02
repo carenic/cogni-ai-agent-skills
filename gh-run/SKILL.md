@@ -120,12 +120,6 @@ mindmap
     gh run view <run_id> --verbose --repo <owner>/<repo>
     ```
 
-  - Fetch job metadata (including head branch/SHA) via the API:
-
-    ```bash
-    gh api repos/<owner>/<repo>/actions/jobs/<job_id>
-    ```
-
 ## Structured Query Patterns
 
 - `gh run list --json databaseId,name,workflowName,status,conclusion,url --limit 20`
