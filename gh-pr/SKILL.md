@@ -186,13 +186,12 @@ flowchart LR
 ## Interaction & Comments
 
 - For PR thread interactions, use `gh pr comment` or `gh api`.
-- For long comments, use a HEREDOC body:
+- For long comments, avoid heredocs as they can cause shell hangs if truncated. Write the comment to a temporary file
+  first, then use `--body-file`:
 
   ```bash
-  gh pr comment <number> --body "$(cat <<'INNER_EOF'
-  [your comment text here]
-  INNER_EOF
-  )"
+  # Use your file-writing tools to write the comment to /tmp/comment.md, then:
+  gh pr comment <number> --body-file /tmp/comment.md
   ```
 
 - **Note**: `gh pr review` is often restricted in automated environments (e.g., OpenCode); prefer `gh pr comment`.
