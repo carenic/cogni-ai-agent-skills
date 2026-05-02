@@ -34,7 +34,8 @@ Check `github.event_name` and payload to identify trigger source:
 - **Direct API Responses ONLY**: When asked to comment on an issue, you MUST use the `gh` CLI (`gh issue comment`
   etc.) to post the comment directly via API. NEVER write the comment text to a file in the workspace or commit
   such files.
-  For long comments, avoid HEREDOCs as they can cause shell hangs. Write the comment to a temporary file outside the workspace (e.g., `/tmp/comment.md`), then use `--body-file`:
+  For long comments, avoid heredocs as they can cause shell hangs. Write the comment to a temporary file outside the
+  workspace (e.g., `/tmp/comment.md`), then use `--body-file`:
 
   ```bash
   gh issue comment 123 --body-file /tmp/comment.md

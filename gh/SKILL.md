@@ -348,7 +348,7 @@ mindmap
   - issue thread -> `gh issue comment`; see `gh-issue` or `github-issue` for routing
   - pull request comment/review thread -> see `gh-pr` or `github-pr` for PR routing
   - inline review thread -> `gh api .../replies`
-- For long comments, avoid HEREDOCs which can cause hangs. Write to a temporary file and use `--body-file`:
+- For long comments, avoid heredocs which can cause hangs. Write to a temporary file and use `--body-file`:
   `gh issue comment <number> --body-file /tmp/comment.md`
 - For GraphQL mutations with large bodies from files:
   `gh api graphql -f query='mutation($body: String!) { ... }' -F body=@file.md`

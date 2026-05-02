@@ -186,7 +186,8 @@ flowchart LR
 ## Interaction & Comments
 
 - For PR thread interactions, use `gh pr comment` or `gh api`.
-- For long comments, avoid HEREDOCs as they can cause shell hangs if truncated. Write the comment to a temporary file first, then use `--body-file`:
+- For long comments, avoid heredocs as they can cause shell hangs if truncated. Write the comment to a temporary file
+  first, then use `--body-file`:
 
   ```bash
   # Use your file-writing tools to write the comment to /tmp/comment.md, then:
