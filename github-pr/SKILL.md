@@ -127,20 +127,28 @@ If the runtime did not involve intended modification of files:
 - **Contextual Continuity**: Maintain conversation context within the originating thread. When replying to an inline
   comment, your response MUST appear as a reply in that same thread.
 - **Scope Focus**: Avoid blindly fixing all PR comments not relevant to the original prompt.
-- **Validating Review Comments**: PR review comments MUST be validated before blindly
-  applying fixes. This is especially true for comments from bots, which are often
-  mistaken. If a bot's suggestion is incorrect, provide an inline reply to the
-  relevant comment explaining the reasoning.
-- **Significant Refactors**: Do not follow bot comment requests that require significant
-  refactoring without authoritative user approval, unless it is directly relevant to
-  the current context.
+- **Validating Review Comments**:
+  PR review comments MUST be validated before blindly applying fixes. This is
+  especially true for comments from bots, which are often mistaken. If a bot's
+  suggestion is incorrect, provide an inline reply to the relevant comment
+  explaining the reasoning.
+- **Significant Refactors**:
+  Do not follow bot comment requests that require significant refactoring without
+  authoritative user approval, unless it is directly relevant to the current
+  context.
 
 ### GitHub Runtime Decision Policy
 
-- **Default to Best Practice:** Implement the most recommended path autonomously when multiple options exist.
-- **Document Trade-offs:** Capture unresolved decisions, explicit options, and impacts in the PR description.
-- **Never Stall:** Proceed immediately with safe defaults. Request preference feedback in the PR instead of waiting.
-- **Report Defensively:** Present recommended option first; list alternatives only if they alter scope or risk.
+- **Default to Best Practice:**
+  Implement the most recommended path autonomously when multiple options exist.
+- **Document Trade-offs:**
+  Capture unresolved decisions, explicit options, and impacts in the PR description.
+- **Never Stall:**
+  Proceed immediately with safe defaults. Request preference feedback in the PR
+  instead of waiting.
+- **Report Defensively:**
+  Present recommended option first; list alternatives only if they alter scope or
+  risk.
 
 ## 5. Fetching PR Information
 
