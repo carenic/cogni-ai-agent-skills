@@ -70,7 +70,8 @@ Check `github.event_name` and payload to identify trigger source:
 ## 3. Issue Management & State
 
 - **Modifying Issues**: When asked to add labels, change assignees, or edit the issue description, use `gh issue edit <number>`.
-- **Closing/Reopening**: Use `gh issue close <number>` or `gh issue reopen <number>` when the issue lifecycle demands it.
+- **Closing/Reopening**: Use `gh issue close <number>` or
+  `gh issue reopen <number>` when the issue lifecycle demands it.
 
 ## 4. Fetching Issue Information
 
