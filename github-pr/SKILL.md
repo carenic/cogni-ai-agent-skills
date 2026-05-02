@@ -2,7 +2,7 @@
 name: github-pr
 description: >-
   Skills for working with changes on a GitHub Pull Request.
-  You must load this skill when working with changes on a pull request
+  You must load this skill before starting work with changes related to a pull request
   or when runtime was triggered by a PR comment.
   Load this before any gh skills.
 ---
