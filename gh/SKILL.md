@@ -141,37 +141,7 @@ mindmap
       list
         List GPG keys
     issue
-      (Load gh-issue or github-issue skill if required)
-      close
-        Close issue
-      comment
-        Add a comment
-      create
-        Create a new issue
-      delete
-        Delete issue
-      develop
-        Manage linked branches
-      edit
-        Edit issues
-      list
-        List issues
-      lock
-        Lock conversation
-      pin
-        Pin an issue
-      reopen
-        Reopen issue
-      status
-        Show status
-      transfer
-        Transfer issue
-      unlock
-        Unlock conversation
-      unpin
-        Unpin an issue
-      view
-        View an issue
+      (Load gh-issue skill if required)
     label
       clone
         Clone labels
@@ -189,7 +159,7 @@ mindmap
       list
         List organizations
     pr
-      (Load gh-pr or github-pr skill if required)
+      (Load gh-pr skill if required)
     project
       close
         Close a project
