@@ -28,7 +28,8 @@ you **MUST** read the rest of the file to access the relevant expert guidance an
 
 ## Related Skills
 
-- **mermaid**: Expert guide for stable, production-grade Mermaid.js diagrams.
+- **mermaid**:
+  Must be loaded when creating or maintaining Mermaid.js diagrams.
 
 ## Diagram Types & Patterns
 

@@ -395,10 +395,17 @@ in GitHub Actions, refer to the **github-issue** and **github-pr** skills.
 
 ## Related Skills
 
-- **gh-api**: For authenticated REST and GraphQL API requests.
-- **gh-issue**: For issue management and metadata.
-- **gh-pr**: For pull request tracking and management.
-- **gh-run**: For interacting with GitHub Actions workflows and checking run/job status.
-- **gh-models**: For running and evaluating AI models via GitHub Models CLI.
-- **github-issue**: For high-level issue routing in GitHub Actions.
-- **github-pr**: For high-level pull request routing in GitHub Actions.
+- **gh-api**:
+  Must be loaded when working with `gh api` command.
+- **gh-issue**:
+  Must be loaded when working with `gh issue` command.
+- **gh-pr**:
+  Must be loaded when working with `gh pr` command.
+- **gh-run**:
+  Must be loaded when working with `gh run` command.
+- **gh-models**:
+  Must be loaded when working with `gh models` command.
+- **github-issue**:
+  Must be loaded when working with issues or when runtime was triggered by an issue comment.
+- **github-pr**:
+  Must be loaded when working with changes associated with a pull request.

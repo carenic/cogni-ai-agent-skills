@@ -372,6 +372,9 @@ Notes:
 
 ## Related Skills
 
-- **gh**: For standard GitHub CLI operations (issues, repos, prs).
-- **gh-pr**: For pull request tracking and management.
-- **gh-run**: For workflow runs, jobs, logs, and diagnostic tools.
+- **gh**:
+  Must be loaded when working with `gh` command.
+- **gh-pr**:
+  Must be loaded when working with `gh pr` command.
+- **gh-run**:
+  Must be loaded when working with `gh run` command.

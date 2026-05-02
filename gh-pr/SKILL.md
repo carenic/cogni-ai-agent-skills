@@ -284,7 +284,7 @@ If the runtime did not involve intended modification of files:
 - **gh**:
   Must be loaded when working with `gh` command.
 - **gh-run**:
-  Must be loaded when working with `git run` command.
+  Must be loaded when working with `gh run` command.
 - **git**:
   Must be loaded when working with `git` command.
 - **github-pr**:

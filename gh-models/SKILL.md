@@ -134,6 +134,9 @@ Store prompts anywhere in repo (e.g. `.github/prompts/`). Structure enables:
 
 ## Related Skills
 
-- **gh**: For general GitHub CLI usage (issues, PRs, and REST API).
-- **gh-pr**: For detailed pull request creation, management, and review workflows.
-- **gh-run**: For interacting with GitHub Actions workflows and checking run/job status.
+- **gh**:
+  Must be loaded when working with `gh` command.
+- **gh-pr**:
+  Must be loaded when working with `gh pr` command.
+- **gh-run**:
+  Must be loaded when working with `gh run` command.

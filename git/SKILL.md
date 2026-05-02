@@ -342,4 +342,5 @@ user.
 
 ## Related Skills
 
-- **gh-pr**: For pull request management, review workflows, and CI/CD checks using GitHub CLI.
+- **gh-pr**:
+  Must be loaded when working with `gh pr` command.

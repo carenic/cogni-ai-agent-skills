@@ -93,4 +93,5 @@ If the runtime did not involve intended modification of files:
 
 ## Related Skills
 
-- `gh`: For low-level `gh` command operations.
+- **gh**:
+  Must be loaded when working with `gh` command.

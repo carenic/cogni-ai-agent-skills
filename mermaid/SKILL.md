@@ -756,5 +756,7 @@ mindmap
 
 ## Related Skills
 
-- **gh-api**: For retrieving repository data (commits, PR reviews, etc.) to generate Mermaid diagrams via GitHub CLI.
-- **mermaid-beta**: Guide for experimental and beta Mermaid.js diagram types.
+- **gh-api**:
+  Must be loaded when working with `gh api` command.
+- **mermaid-beta**:
+  Must be loaded when working with experimental Mermaid.js beta diagrams.

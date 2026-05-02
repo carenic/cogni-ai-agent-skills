@@ -131,6 +131,9 @@ If the runtime did not involve intended modification of files:
 
 ## Related Skills
 
-- **gh**: For general GitHub CLI usage (auth, extensions, API).
-- **github-issue**: For runtime behaviors and routing from issue comments in GitHub Actions.
-- **gh-pr**: For detailed pull request creation, management, and review workflows.
+- **gh**:
+  Must be loaded when working with `gh` command.
+- **github-issue**:
+  Must be loaded when working with issues or when runtime was triggered by an issue comment.
+- **gh-pr**:
+  Must be loaded when working with `gh pr` command.

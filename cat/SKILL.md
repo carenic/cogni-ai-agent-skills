@@ -74,4 +74,5 @@ EOF
 
 ## Related Skills
 
-- **robust-commands**: For general resilient command execution and fallbacks.
+- **robust-commands**:
+  Must be loaded when executing commands requiring resilient error recovery or fallbacks.
