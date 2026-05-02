@@ -36,6 +36,7 @@ Cogni AI capabilities loaded into the `.github/` directory.
   fact files without contradictions
 - **[gh](gh/SKILL.md)**: GitHub CLI (`gh`) operations for issues, pull requests, workflow runs, reviews, and API
 - **[gh-api](gh-api/SKILL.md)**: Advanced GitHub CLI (`gh api`) queries and mutations via REST or GraphQL
+- **[gh-issue](gh-issue/SKILL.md)**: GitHub CLI (`gh issue`) operations for managing, viewing, and editing issues
 - **[gh-models](gh-models/SKILL.md)**: GitHub CLI models (`gh models`) operations for running and evaluating AI models
 - **[gh-pr](gh-pr/SKILL.md)**: GitHub CLI (`gh pr`) operations for pull requests, reviews, PR checks, and PR branches
 - **[gh-run](gh-run/SKILL.md)**: GitHub CLI (`gh run` and `gh workflow`) operations for workflow runs, jobs, logs, and attempts

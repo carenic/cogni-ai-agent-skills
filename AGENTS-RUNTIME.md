@@ -19,6 +19,8 @@ and planned work into the current context:
   You must load this skill when working with the `gh` command and its subcommands.
 - **[gh-api](gh-api/SKILL.md)**: Advanced GitHub CLI (`gh api`) queries and mutations via REST or GraphQL.
   You must load this skill when working with the `gh api` command.
+- **[gh-issue](gh-issue/SKILL.md)**: GitHub CLI (`gh issue`) operations for managing, viewing, and editing issues.
+  You must load this skill when working with the `gh issue` command.
 - **[gh-models](gh-models/SKILL.md)**: GitHub CLI models (`gh models`) operations for running and evaluating AI
   models.
   You must load this skill when working with the `gh models` command.

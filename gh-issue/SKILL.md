@@ -41,24 +41,28 @@ mindmap
 
 - **Issue Creation**:
   Always prefer non-interactive creation in automated environments:
+
   ```bash
   gh issue create --title "bug: unexpected crash" --body-file /tmp/description.md --label "bug" --assignee "@me"
   ```
 
 - **Listing Issues**:
   To quickly identify open issues with specific labels:
+
   ```bash
   gh issue list --state open --label "bug" --json number,title,createdAt --limit 10
   ```
 
 - **Viewing Issue Details**:
   For quick structured review of an issue without leaving the terminal:
+
   ```bash
   gh issue view <number> --json title,body,state,labels,assignees,comments
   ```
 
 - **Modifying Issues**:
   Be explicit about the modifications:
+
   ```bash
   gh issue edit <number> --add-label "in-progress" --add-assignee "@me"
   gh issue close <number> --reason "completed"
@@ -66,14 +70,8 @@ mindmap
 
 ## Interaction & Comments
 
-- For issue thread interactions, use `gh issue comment`.
-- For long comments, use a HEREDOC body:
-  ```bash
-  gh issue comment <number> --body "$(cat <<'INNER_EOF'
-  [your comment text here]
-  INNER_EOF
-  )"
-  ```
+For issue thread interactions, response routing, and workspace invariants in GitHub Actions,
+refer to the **github-issue** skill.
 
 ## Related Skills
 
