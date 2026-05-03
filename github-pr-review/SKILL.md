@@ -2,7 +2,7 @@
 name: github-pr-review
 description: >-
   Comprehensive PR review workflow for verifying code quality, metadata accuracy, and merge readiness.
-  Must be loaded when reviewing a pull request.
+  You must load this skill when reviewing, auditing, or verifying a GitHub Pull Request.
 ---
 
 # GitHub PR Review
