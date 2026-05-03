@@ -47,6 +47,8 @@ Cogni AI capabilities loaded into the `.github/` directory.
 - **[github-actions](github-actions/SKILL.md)**: Diagnosing and debugging failing GitHub Actions workflows
 - **[github-issue](github-issue/SKILL.md)**: Guidance for issue context routing, response routing, and workspace invariants
 - **[github-pr](github-pr/SKILL.md)**: Guidance for PR context routing, branch sync policies, and workspace invariants
+- **[github-pr-review](github-pr-review/SKILL.md)**: Comprehensive PR review workflow for verifying code quality,
+  metadata accuracy, and merge readiness
 - **[github-script](github-script/SKILL.md)**: Advanced use cases and examples for using actions/github-script
 - **[mermaid](mermaid/SKILL.md)**: Guide for creating and maintaining stable Mermaid.js diagrams
 - **[mermaid-beta](mermaid-beta/SKILL.md)**: Guide for creating and maintaining experimental Mermaid.js beta diagrams
