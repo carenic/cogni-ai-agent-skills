@@ -10,7 +10,7 @@ license: MIT
 
 # Skill Writer
 
-<!-- markdownlint-disable MD013 -->
+<!-- markdownlint-disable MD013 MD023 MD031 MD032 -->
 
 Generate or update SKILL.md files for GitHub Copilot coding agents, ensuring
 precise activation, concise expert-level guidance, and full compliance with
@@ -27,10 +27,18 @@ repository standards.
 - User provides new rules, examples, or feedback intended to guide skill authoring.
 - User requests to update, improve, or refactor an existing SKILL.md.
 
+## Core Process
+
+1. **Infer Name & Context**: Determine a unique, descriptive `name` in lowercase-hyphenated format that will exactly match the folder name.
+2. **Draft the Description**: Write a single, highly precise `description` sentence capturing exact activation triggers without overlap.
+3. **Structure the File**: Follow the exact layout specified in `Skill Structure & Formatting`.
+4. **Enforce Style**: Write dense, imperative, expert-level instructions assuming ninja proficiency; skip basics, favor one-liners.
+5. **Output**: Output ONLY the complete, ready-to-commit SKILL.md content without conversational wrappers. Do not explain the changes unless requested.
+
 ## Core Principles
 
 - **Autonomous Execution Focus**: Write for non-interactive agent flow: self-contained loops, built-in error recovery, verification steps, and no user confirmation prompts except for safety-critical actions.
-- **YAML Frontmatter is Mandatory**: Begin every SKILL.md with required fields `name` (lowercase-hyphenated, exactly matching folder name) and `description` (one precise, activation-triggering sentence explaining exactly what the skill does and when Copilot should load it). Include `license` only if needed. YAML must pass all repository validation and linting rules.
+- **YAML Frontmatter is Mandatory**: Begin every SKILL.md with required fields `name` (lowercase-hyphenated, exactly matching folder name) and `description` (one precise, activation-triggering sentence). Include `license` only if needed. YAML must pass all repository validation rules.
 - **Description Precision**: Write the `description` as a single, highly specific sentence that matches user intent patterns without overlap—poor phrasing causes missed or false activations.
 - **Avoid Hardcoding**: Never embed specific values, file paths, repository names, user details, or tool versions; instead, use clear placeholders (e.g., `<repository-name>`, `<file-path>`, `<version>`).
 - **Pure Markdown Body**: Use only Markdown in the body; never include extraneous files, scripts, or resources unless explicitly required for the skill.
@@ -41,10 +49,11 @@ Structure the file exactly as:
 
 1. **YAML frontmatter block**
 2. **Title (`# Skill Name`)**
-3. **Markdownlint overrides** (e.g., `<!-- markdownlint-disable MD013 -->`)
+3. **Markdownlint overrides** (e.g., `<!-- markdownlint-disable MD013 MD023 MD031 MD032 -->`)
 4. **Brief Intro** (1-2 sentences)
 5. **Section Discipline**: Use standard sections in a logical progression:
    - `## When to Activate`
+   - `## Core Process` (if a step-by-step flow is needed)
    - `## Core Principles`
    - `## Commands / Usage Patterns`
    - `## Diagnostics and Troubleshooting`
@@ -58,7 +67,7 @@ Structure the file exactly as:
 - Skip basics, favor one-liners, pack maximum depth.
 - **Example Discipline**: Use fewer, shorter examples. Include only essential examples that demonstrate key patterns. Prefer single-line examples over multi-line blocks. Quality over quantity.
 - **Command-Line Tool Examples**: When the skill involves command-line tools, derive their usage dynamically via read/glob operations to maximize skill generality. Provide concise examples of key commands—focus on complex, multi-flag, piped, or non-standard operations.
-- **Skill Length Management**: Keep skills concise and focused, ideally under 150 lines. If a skill approaches 300 lines, or if content becomes unfocused, split it into multiple specialized skills with narrow, non-overlapping activation descriptions.
+- **Skill Length Management**: Keep skills concise and focused. If a skill approaches 300 lines, or if content becomes unfocused, split it into multiple specialized skills with narrow, non-overlapping activation descriptions.
 
 ## What to Avoid
 
@@ -66,6 +75,7 @@ Structure the file exactly as:
 - Using interactive command examples (e.g., `git rebase -i`) without explicitly warning against them or providing non-interactive alternatives.
 - Creating excessively long files with redundant examples.
 - Explaining basic concepts that a proficient developer or AI agent would already know.
+- Outputting conversational filler. ONLY output the file content.
 
 ## Limitations
 
