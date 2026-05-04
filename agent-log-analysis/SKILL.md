@@ -38,21 +38,25 @@ the task of [Brief Task Description] while maintaining strict adherence to the
 project's initialization and verification workflows.
 
 #### Session Summary
+
 * **Primary Task:** [What was the agent explicitly instructed to do?]
 * **Workflow Compliance:** [Did the agent load the necessary constraints, flows, and instructions?]
 * **Conclusion:** [What was the final state?]
 
 #### Key Actions & Decisions
+
 * **Context Gathering:** [How did the agent acquire necessary information?]
 * **Task/Workflow Management:** [How did it track progress?]
 * **Execution / Tracing:** [What were the core actions taken?]
 * **Self-Verification:** [Did it verify the environment state?]
 
 #### Root Cause Identified (If Applicable)
+
 The agent discovered a **[brief description of the core issue]**:
 1. **[Step 1]**: [Description]
 
 #### Issues Encountered
+
 * **[Issue / None]:** [Describe any tool failures or explicitly state "None".]
 
 #### Recommendation Provided (Optional)
