@@ -31,6 +31,8 @@ Do not invent new structures or deviate from these templates.
 ### 2.1 Text Report (Markdown)
 
 ```markdown
+#### Brief
+
 The agent session for **github.run_id [Run ID] (attempt [Attempt Number])** was
 [successful / unsuccessful / partially successful] and [followed / deviated from]
 established protocols. Operating as the `[Agent Persona]`, the agent completed
@@ -75,6 +77,8 @@ The agent discovered a **[brief description of the core issue]**:
 #### Recommendation Provided (Optional)
 [Summarize any recommendations]
 ```
+
+Note: Don't include code block for above.
 
 ### 2.2 Comprehensive Visual Audit Suite (Mermaid & Data)
 
