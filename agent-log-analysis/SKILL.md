@@ -180,7 +180,8 @@ If failures or bugs hit the agent, you MUST generate:
 
 #### G. Agent Tool Usage Mindmap
 
-Generate a Mermaid `mindmap` visualizing the hierarchy of tools and their key parameters or sub-commands executed during the session.
+Generate a Mermaid `mindmap` visualizing the hierarchy of tools
+and their key parameters or sub-commands executed during the session.
 
 ```mermaid
 mindmap
@@ -191,10 +192,15 @@ mindmap
       filePath
     Shell
       command
-        grep
         gh
-          skill
-            name: gh-run
+        grep
+    Skill
+      gh-run
+      git
+    Task
+      subagent_type
+        brain-ops
+    Todo
 ```
 
 #### H. Agent File Access Hierarchy
