@@ -236,3 +236,17 @@ kanban
   Ready for Deploy - Status: pending
     id8[Design grammar]@{ assigned: 'agent' }
 ```
+
+#### J. Agent Tool Utilization (Pie Chart)
+
+Generate a Mermaid `pie` diagram to visualize the relative frequency of tool calls.
+
+```mermaid
+pie title "Tool Call Distribution"
+    "Glob" : 1
+    "Read" : 2
+    "Shell" : 3
+    "Skill" : 4
+    "Task" : 5
+    "Todo" : 1
+```
