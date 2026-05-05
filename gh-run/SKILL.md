@@ -108,12 +108,16 @@ mindmap
     gh run view --job <job_id> --repo <owner>/<repo> --log
     ```
 
-  - **Retrieving Job Summaries**:
-    Job Summaries (Markdown content written to `$GITHUB_STEP_SUMMARY`) are **NOT** available via the REST API or
-    standard `gh run view` JSON output. They are intended for the web UI.
-    If you need to retrieve a summary programmatically:
-    - Check if the action also prints the summary to the **logs**.
-    - Check for **Check Run Annotations** which might contain brief messages.
+  - **Retrieving Job Summaries vs. Annotations**:
+    - **Annotations** can be viewed in the CLI using `gh run view <run_id> --verbose`.
+    - **Job Summaries** (Markdown content written to `$GITHUB_STEP_SUMMARY`) are **NOT** available via the REST API or
+      standard `gh run view` JSON output. They are strictly intended for the GitHub web UI.
+    If you need to retrieve a Job Summary programmatically, you must rely on workflow-specific workarounds:
+    - Parse it from the **logs** (`gh run view --job <job_id> --log`).
+      Note: Actions runners often dump the executed shell script and its evaluated environment variables into the step log preamble.
+      If a script loads the summary from an env var (e.g., `echo "$RESPONSE" >> $GITHUB_STEP_SUMMARY`),
+      you can `grep` the log for that variable block.
+    - Check if the action also creates **Check Run Annotations** for key messages.
     - Check if the summary was posted as a **PR or Issue comment**.
 
   - Inspect a specific run attempt (defaults to latest if not specified):

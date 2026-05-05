@@ -105,7 +105,10 @@ For standard Action jobs, this field is almost always `null`.
 
 1. **Check for separate Check Runs**: Some tools (like `agent-auditor`) might create a *separate* check run
    (distinct from the job itself) and populate its `output.summary`.
-2. **Inspect logs**: If the summary was also printed to the console, use `gh run view --job <job_id> --log`.
+2. **Inspect logs**: Use `gh run view --job <job_id> --log`.
+  Even if the script only writes to `$GITHUB_STEP_SUMMARY`, the raw summary text can often be scraped from the step's initialization logs
+  where evaluated environment variables (like `$RESPONSE`)
+  or expanded `echo` commands are echoed by the runner preamble.
 3. **Check PR Comments**: Many actions post summaries as PR comments. Use `gh pr view <number> --json comments`.
 
 ## Discussion Patterns (via GraphQL)
