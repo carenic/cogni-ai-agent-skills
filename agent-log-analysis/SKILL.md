@@ -139,14 +139,14 @@ Generate a Mermaid `venn-beta` diagram visualizing action alignment. Ensure stri
 ```mermaid
 venn-beta
     title "Action Alignment"
-    set Intent["User Request"]
-    set Actions["Agent Tool Calls"]
-    set Rules["System Protocols"]
+    set Intent["Request"]
+    set Actions["Actions"]
+    set Rules["Protocols"]
 
-    union Intent,Actions["Targeted Actions"]
-    union Intent,Rules["Expected Protocol"]
-    union Actions,Rules["Compliant Actions"]
-    union Intent,Actions,Rules["Perfect Execution"]
+    union Intent,Actions["Targeted"]
+    union Intent,Rules["Expected"]
+    union Actions,Rules["Compliant"]
+    union Intent,Actions,Rules["Execution"]
 ```
 
 #### F. Root Cause & System Architecture (If Errors Occurred)
@@ -211,6 +211,8 @@ mindmap
 #### H. Agent File Access Hierarchy
 
 Generate a Mermaid `treeView-beta` diagram visualizing the hierarchy of files and directories accessed by the agent.
+
+**Accessed Files Tree**
 
 ```mermaid
 treeView-beta
