@@ -37,6 +37,11 @@ established protocols. Operating as the `[Agent Persona]`, the agent completed
 the task of [Brief Task Description] while maintaining strict adherence to the
 project's initialization and verification workflows.
 
+#### Prompt Summary
+
+* **Trigger Source:** [e.g., GitHub issue comment, manual workflow run]
+* **Prompt Summary:** [Brief summary of the input prompt/trigger.]
+
 #### Session Summary
 
 * **Primary Task:** [What was the agent explicitly instructed to do?]
@@ -46,9 +51,17 @@ project's initialization and verification workflows.
 #### Key Actions & Decisions
 
 * **Context Gathering:** [How did the agent acquire necessary information?]
+* **Agent Interactions:** [List any sub-agents called and their purpose (e.g., Architect -> Brain Ops).]
 * **Task/Workflow Management:** [How did it track progress?]
 * **Execution / Tracing:** [What were the core actions taken?]
 * **Self-Verification:** [Did it verify the environment state?]
+
+#### Session Telemetry
+
+* **Execution Time:** [Total time taken]
+* **Steps Taken:** [Number of steps]
+* **Tool Calls:** [Total number of tool calls]
+* **Tokens Used:** [Optional: total tokens if available]
 
 #### Root Cause Identified (If Applicable)
 
@@ -80,8 +93,24 @@ radar-beta
 
 Generate a Mermaid `sequenceDiagram` visualizing chronological actions.
 
-- **Participants**: `Workflow`, `Agent`, `Tools`, `FileSystem`, `GitHub`
-- **Focus**: Initialization, Context Gathering, Execution, Verification.
+- **Participants**: `Workflow`, `Agent`, `[Sub-Agent]`, `Tools`, `FileSystem`, `GitHub`
+- **Focus**: Initialization, Context Gathering, Agent Interactions (e.g., Task/delegation calls), Execution, Verification.
+
+Example showing sub-agent interaction:
+```mermaid
+sequenceDiagram
+    participant W as Workflow
+    participant A as Architect
+    participant B as BrainOps
+    participant T as Tools
+
+    W->>A: Start Task
+    A->>T: Search Context
+    T-->>A: Results
+    A->>B: Delegate Architecture Plan
+    B-->>A: Proposed Plan
+    A->>T: Implement Plan
+```
 
 #### C. Agent Cognitive & Execution Loop (State Diagram)
 
