@@ -17,11 +17,12 @@ Execute expert-level code reviews, dissecting codebases and Pull Requests (PRs) 
 2. **Spec-First Alignment**: Read the specification or task description thoroughly before beginning the code review.
 3. **Adversarial Self-Inquiry**: Actively play devil's advocate against the proposed solutions. Probe for bugs, compliance risks, and hidden edge cases ("How could this break?").
 4. **Evaluate Dimensions**:
-   - **Correctness & Robustness**: Verify functional alignment, edge cases, logic integrity, and test efficacy.
-   - **Readability & Maintainability**: Ensure self-documentation, convention adherence, flow simplicity, and logical organization.
-   - **Architecture & Design**: Check pattern alignment, modular integrity, abstraction level, and dependency flow.
-   - **Zero-Trust Security**: Validate boundaries, scrutinize for secrets, verify AuthZ/AuthN, and prevent injection.
-   - **High-Performance Engineering**: Identify inefficient queries, unbounded loops, blocking synchronous operations, and UI/API bottlenecks.
+    - **Code Hygiene**: Scan for temporary/debug statements (`console.log`, `print`, `TODO`, `FIXME`, debugger breakpoints) and unintended files (`.env`, logs).
+    - **Correctness & Robustness**: Verify functional alignment, edge cases, logic integrity, and test efficacy.
+    - **Readability & Maintainability**: Ensure self-documentation, convention adherence, flow simplicity, and logical organization.
+    - **Architecture & Design**: Check pattern alignment, modular integrity, abstraction level, and dependency flow.
+    - **Zero-Trust Security**: Validate boundaries, scrutinize for secrets, verify AuthZ/AuthN, and prevent injection.
+    - **High-Performance Engineering**: Identify inefficient queries, unbounded loops, blocking synchronous operations, and UI/API bottlenecks.
 5. **Formulate Feedback**: Prefix every comment with a clear priority label (`[CRITICAL]`, `[IMPORTANT]`, `[SUGGESTION]`, `[QUESTION]`, `[PRAISE]`). Provide a concrete resolution path for every issue raised.
 6. **Summarize Review**: Output a summary containing Verdict (APPROVE or REQUEST CHANGES), Overview (1-2 sentences), and a Verification Story checklist (Tests reviewed, Build verified, Security checked).
 
@@ -35,10 +36,27 @@ Execute expert-level code reviews, dissecting codebases and Pull Requests (PRs) 
 
 ## Commands / Usage Patterns
 
-To fetch PR context and post reviews, utilize the `gh` CLI via the `github-pr` and `github-pr-review` skills.
-- Use `gh pr view <number>` to understand the PR.
-- Use `gh pr diff <number>` to analyze the changes.
-- Use `gh pr review <number> --comment -b "<summary>"` to post the final review.
+While the workflow is managed by `github-pr-review`, this skill focuses on analyzing the diff and formulating feedback.
+
+- **Check for hygiene issues in diff**:
+  ```bash
+  # Check for debug statements and markers
+  git diff <base>...HEAD | grep -E "console\.log|debugger|print\(|TODO|FIXME|<<<<<<<|>>>>>>>"
+  ```
+- **Post a structured review comment**:
+  ```bash
+  gh pr review <number> --comment -b "$(cat <<EOF
+  ## Code Review Summary
+  **Verdict**: APPROVE | REQUEST CHANGES
+  **Overview**: <1-2 sentences>
+
+  ### Verification Story
+  - [ ] Tests reviewed
+  - [ ] Build verified
+  - [ ] Security checked
+  EOF
+  )"
+  ```
 
 ## What to Avoid
 

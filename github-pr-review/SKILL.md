@@ -19,15 +19,10 @@ Execute these checks systematically using `gh` and `git` tools:
     has been integrated.
   - **Metadata Accuracy**: Ensure PR Title follows Conventional Commits and Description accurately reflects all changes.
 - **Deep Code Inspection**:
+  - **Inspection Framework**: Apply the `code-review` skill's cognitive framework to evaluate code quality dimensions.
   - **Atomic File Analysis**: Step through the diff file-by-file or component-by-component.
-  - **Code Hygiene**: Scan for temporary/debug statements (`console.log`, `print`, `TODO`, `FIXME`, debugger breakpoints)
-    and unintended files (`.env`, logs).
-  - **Scope Control & Drive-by Prevention**: Ensure the PR does strictly what it claims. Flag any drive-by changes or
-    unrelated refactoring that expand the PR's impact.
-  - **Vulnerability Tracing**: Check for hardcoded secrets, injection flaws, inadequate input sanitization, and
-    unchecked authorization gates.
-  - **Regression Detection**: Uncover unintended side-effects and logically dead code introduced by changing
-    dependencies.
+  - **Scope Control**: Ensure the PR does strictly what it claims. Flag any drive-by changes or unrelated refactoring.
+  - **Integration Check**: Verify that new code correctly integrates with existing patterns and dependencies.
 - **Verification & Merge Readiness**:
   - **Build & CI Status**: Verify that all CI/CD checks (status checks) are passing.
   - **Test-Driven Audit**: Validate that adequate unit and integration tests accompany the changed vectors. Flag
@@ -51,10 +46,9 @@ gh pr checks <pr-number>
 
 ### 2. Deep Inspection
 
-```bash
-# Check for debug statements in diff
-git diff $(gh pr view <pr-number> --json baseRefName --jq .baseRefName)...HEAD | grep -E "console\.log|debugger|print\(|TODO|FIXME"
+Refer to the `code-review` skill for the deep inspection framework and hygiene check patterns.
 
+```bash
 # List comments to ensure resolution
 gh api repos/:owner/:repo/pulls/<pr-number>/comments
 ```
@@ -83,6 +77,8 @@ using the `task` tool to ensure thorough coverage:
 
 ## Related Skills
 
+- **code-review**:
+  Must be loaded when performing deep inspection of code changes.
 - **github-pr**:
   Must be loaded when working with changes on a GitHub Pull Request.
 - **gh-pr**:
