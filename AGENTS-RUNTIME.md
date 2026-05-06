@@ -27,6 +27,8 @@ and planned work into the current context.
   You must load this skill when working with the `ansible` command.
 - **[cat](cat/SKILL.md)**: Guidelines for safely using `cat` and avoiding shell hangs with heredocs.
   You must load this skill before running `cat` command (especially with `EOF`).
+- **[code-review](code-review/SKILL.md)**: Execute expert-level code reviews and analyze Pull Requests (PRs) to identify flaws.
+  You must load this skill when reviewing code or Pull Requests.
 - **[code-tour](code-tour/SKILL.md)**: Create, update, and maintain VSCode CodeTour (.tour) JSON walkthrough files with
   full schema compliance and interactive step configuration.
   You must load this skill when creating or updating .tours/ files.
