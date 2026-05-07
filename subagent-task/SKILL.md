@@ -32,20 +32,21 @@ The use of the `task` tool and spawning sub-agents is permitted for complex, mul
 %% --------------------------------------------------------
 %% Agent Delegation Protocol
 %% --------------------------------------------------------
-subgraph Flow_Agent_Delegation ["Agent Delegation Protocol"]
-    direction TB
-    Arch((Cogni AI Architect))
-    Arch -->|task tool| DevOps[cogni-ai-devops<br/>Task automation, CI/CD, IaC]
-    Arch -->|task tool| FactOps[cogni-ai-fact-ops<br/>Maintain facts & info consistency]
-    Arch -->|task tool| PyDev[cogni-ai-python-dev<br/>Write, test, debug Python]
-    Arch -->|task tool| BrainOps[cogni-ai-brain-ops<br/>Gather facts, constraints, plan]
-    Arch -->|task tool| GHOps[cogni-ai-github-ops<br/>Modify comments, issues, discussions]
-    Arch -->|task tool| CodeRev[cogni-ai-code-reviewer<br/>PR analysis, quality, security]
-    Arch -->|task tool| SecAud_Arch[cogni-ai-security-auditor<br/>Expert deep security audit]
-    Arch -->|task tool| PlanRev[cogni-ai-plan-reviewer<br/>Architectural & plan validation]
-    Arch -->|task tool| Tester[cogni-ai-tester<br/>Execute tests, verify behavior]
-    Arch -->|task tool| C7Ops[cogni-ai-context7-ops<br/>Retrieve & filter documentation]
-end
+flowchart TD
+    subgraph Flow_Agent_Delegation ["Agent Delegation Protocol"]
+        direction TB
+        Arch((Cogni AI Architect))
+        Arch -->|task tool| DevOps[cogni-ai-devops<br/>Task automation, CI/CD, IaC]
+        Arch -->|task tool| FactOps[cogni-ai-fact-ops<br/>Maintain facts & info consistency]
+        Arch -->|task tool| PyDev[cogni-ai-python-dev<br/>Write, test, debug Python]
+        Arch -->|task tool| BrainOps[cogni-ai-brain-ops<br/>Gather facts, constraints, plan]
+        Arch -->|task tool| GHOps[cogni-ai-github-ops<br/>Modify comments, issues, discussions]
+        Arch -->|task tool| CodeRev[cogni-ai-code-reviewer<br/>PR analysis, quality, security]
+        Arch -->|task tool| SecAud_Arch[cogni-ai-security-auditor<br/>Expert deep security audit]
+        Arch -->|task tool| PlanRev[cogni-ai-plan-reviewer<br/>Architectural & plan validation]
+        Arch -->|task tool| Tester[cogni-ai-tester<br/>Execute tests, verify behavior]
+        Arch -->|task tool| C7Ops[cogni-ai-context7-ops<br/>Retrieve & filter documentation]
+    end
 ```
 
 ## Example: Delegation Scenarios
