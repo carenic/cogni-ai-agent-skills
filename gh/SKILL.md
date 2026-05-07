@@ -263,16 +263,7 @@ mindmap
     run
       (Load gh-run skill if required)
     search
-      code
-        Search within code
-      commits
-        Search for commits
-      issues
-        Search for issues
-      prs
-        Search for pull requests
-      repos
-        Search for repositories
+      (Load gh-search skill if required)
     secret
       delete
         Delete secrets
@@ -397,6 +388,8 @@ in GitHub Actions, refer to the **github-issue** and **github-pr** skills.
   Must be loaded when working with `gh pr` command.
 - **gh-run**:
   Must be loaded when working with `gh run` and `gh workflow` commands.
+- **gh-search**:
+  Must be loaded when working with `gh search` command.
 - **gh-models**:
   Must be loaded when working with `gh models` command.
 - **github-issue**:
