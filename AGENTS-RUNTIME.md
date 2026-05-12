@@ -28,6 +28,9 @@ and planned work into the current context.
   You MUST load this skill when creating or updating AGENTS.md files.
 - **[ansible](ansible/SKILL.md)**: How to run and manage Ansible operations safely and prevent hangs.
   You MUST load this skill when working with the `ansible` command.
+- **[brainstorm](brainstorm/SKILL.md)**: Activate brainstorming protocol to explore options, research, deconstruct
+  complexities, and summarize available data into simple diagrams and MiniZinc constraints.
+  You MUST load this skill when asked to brainstorm, explore options, or break down complex problems.
 - **[brainstorm-agent-runs](brainstorm-agent-runs/SKILL.md)**: Activate agent-run brainstorming protocol to identify and
   analyze agent runs via GitHub API for a given Pull Request.
   You MUST load this skill when identifying agentic runs in CI/CD for a Pull Request.
@@ -42,12 +45,12 @@ and planned work into the current context.
 - **[code-tour](code-tour/SKILL.md)**: Create, update, and maintain VSCode CodeTour (.tour) JSON walkthrough files with
   full schema compliance and interactive step configuration.
   You MUST load this skill when creating or updating .tours/ files.
-- **[critical-thinking](critical-thinking/SKILL.md)**: Engage deep analytical reasoning, deconstruct assumptions,
-  apply Socratic questioning, and perform adversarial red-teaming to solve complex problems and validate architectural plans.
-  You MUST load this skill when facing challenges that require critical thinking.
 - **[context-aware-ops](context-aware-ops/SKILL.md)**: Intelligent resource management with size checking and filtering
   to preserve context window.
   You MUST load this skill when managing large resources or context window limits.
+- **[critical-thinking](critical-thinking/SKILL.md)**: Engage deep analytical reasoning, deconstruct assumptions,
+  apply Socratic questioning, and perform adversarial red-teaming to solve complex problems and validate architectural plans.
+  You MUST load this skill when facing challenges that require critical thinking.
 - **[docs-review](docs-review/SKILL.md)**:
   Enforce documentation quality, completeness, and mutual consistency across architecture, ADRs, runbooks, and code.
   You MUST load this skill when asked to review or check consistency of documentation.
