@@ -99,6 +99,8 @@ mindmap
 
 ## Common Workflow Failure Patterns
 
+Step-by-step procedures for diagnosing workflow issues, resolving failure patterns, applying incident-response learnings, and maintaining reliability.
+
 ### Missing Tool Configurations
 
 **Symptoms**:
