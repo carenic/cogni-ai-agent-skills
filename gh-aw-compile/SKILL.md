@@ -1,6 +1,9 @@
 ---
 name: gh-aw-compile
-description: Regenerate and post-process all agentic workflows. Use when gh-aw is updated, workflow .md files change, or when asked to recompile/regenerate workflows.
+description: >-
+  Regenerate and post-process all agentic workflows. Use when gh-aw is
+  updated, workflow .md files change, or when asked to
+  recompile/regenerate workflows.
 allowed-tools: Bash(gh:*), Bash(npx:*), Read, Glob, Edit
 ---
 
