@@ -10,7 +10,8 @@ Use this skill when you need to regenerate all agentic workflow lock files and a
 
 ## IMPORTANT: Post-processing is required after EVERY lock file change
 
-Any time `.lock.yml` files are regenerated — whether via `gh aw compile`, `gh aw upgrade`, or any other gh-aw command — you MUST run the post-processing script afterward. This is not optional.
+Any time `.lock.yml` files are regenerated — whether via `gh aw compile`, `gh aw upgrade`, or any other gh-aw
+command — you MUST run the post-processing script afterward. This is not optional.
 
 ## Steps
 
@@ -32,7 +33,9 @@ If any workflow fails to compile (e.g., strict mode violations like `contents: w
 
 ### Strict mode violations
 
-Newer gh-aw versions enforce strict mode which disallows write permissions like `contents: write`, `issues: write`, etc. Workflows should use `safe-outputs` for write operations and only request `read` permissions.
+Newer gh-aw versions enforce strict mode which disallows write permissions like `contents: write`,
+`issues: write`, etc. Workflows should use `safe-outputs` for write operations and only request
+`read` permissions.
 
 ### Discussion category warnings
 
