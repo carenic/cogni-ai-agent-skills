@@ -57,6 +57,7 @@ Cogni AI capabilities loaded into the `.github/` directory.
   based on project analysis and user preferences
 - **[fact-writer](fact-writer/SKILL.md)**: Guidance for writing, structuring, and maintaining verifiable project
   fact files without contradictions
+- **[gdpr-compliant](gdpr-compliant/SKILL.md)**: Apply GDPR-compliant engineering practices across your codebase
 - **[gh](gh/SKILL.md)**: GitHub CLI (`gh`) operations for issues, pull requests, workflow runs, reviews, and API
 - **[gh-api](gh-api/SKILL.md)**: Advanced GitHub CLI (`gh api`) queries and mutations via REST or GraphQL
 - **[gh-aw](gh-aw/SKILL.md)**: GitHub Agentic Workflows (`gh aw`) operations for repository automation,
