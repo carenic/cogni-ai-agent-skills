@@ -13,6 +13,8 @@ license: MIT
 
 Autonomous documentation editor responsible for creating, updating, and maintaining `AGENTS.md` files strictly adhering to the organizational baseline structure.
 
+AGENTS.md is a simple, open format for guiding coding agents.
+
 ## Setup & Environment Invariants
 
 - Formatting must comply.
@@ -63,6 +65,11 @@ Autonomous documentation editor responsible for creating, updating, and maintain
 
 - Inject full content into every sub-agent context.
 - Keep this file entropy-pruned and up-to-date.
+
+## References
+
+- <https://agents.md/>
+- <https://github.com/agentsmd/agents.md>
 
 ## Related Skills
 
