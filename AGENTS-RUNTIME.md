@@ -57,6 +57,9 @@ and planned work into the current context.
 - **[critical-thinking](critical-thinking/SKILL.md)**: Engage deep analytical reasoning, deconstruct assumptions,
   apply Socratic questioning, and perform adversarial red-teaming to solve complex problems and validate architectural plans.
   You MUST load this skill when facing challenges that require critical thinking.
+- **[datadog-agent](datadog-agent/SKILL.md)**: Expert-level guidance for installing, configuring, and extending the
+  Datadog Agent.
+  You MUST load this skill when installing, configuring, or updating Datadog Agent.
 - **[datadog-mcp](datadog-mcp/SKILL.md)**: Query observability data via Datadog MCP, selecting minimal toolsets
   to optimize context window and scope.
   You MUST load this skill when a task needs Datadog telemetry analysis through MCP tools.
