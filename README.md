@@ -34,6 +34,9 @@ Cogni AI capabilities loaded into the `.github/` directory.
   logs, extracting telemetry, and generating standardized visual audit reports
 - **[agents-md-writer](agents-md-writer/SKILL.md)**: Autonomous documentation editor responsible for creating,
   updating, and maintaining AGENTS.md files strictly adhering to the organizational baseline structure
+- **[agentskills](agentskills/SKILL.md)**: Guidance on the Agent Skills open standard for creating
+  portable, non-interactive, and secure Copilot agent skills.
+  You MUST load this skill when designing or manually creating agent skills.
 - **[ansible](ansible/SKILL.md)**: How to run and manage Ansible operations safely and prevent hangs.
 - **[brainstorm](brainstorm/SKILL.md)**: Activate brainstorming protocol to explore options, research, deconstruct
   complexities, and summarize available data into simple diagrams and MiniZinc constraints.
@@ -78,6 +81,9 @@ Cogni AI capabilities loaded into the `.github/` directory.
 - **[gh-run](gh-run/SKILL.md)**: GitHub CLI (`gh run` and `gh workflow`) operations for workflow runs, jobs, logs, and attempts
 - **[gh-search](gh-search/SKILL.md)**: GitHub CLI (`gh search`) operations for searching code, commits, issues,
   pull requests, and repositories with structured JSON output
+- **[gh-skill](gh-skill/SKILL.md)**: Expert-level guidance on GitHub CLI (`gh skill`) operations for
+  searching, previewing, installing, updating, and publishing Copilot agent skills.
+  You MUST load this skill when managing agent skills via the GitHub CLI.
 - **[git](git/SKILL.md)**: Guide for using git with non-interactive, safe operations
 - **[git-expert](git-expert/SKILL.md)**: Advanced Git operations including reflog recovery,
   bisecting, complex conflict resolution, and history manipulation

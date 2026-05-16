@@ -1,18 +1,26 @@
 ---
 name: gh-skill
-description: GitHub CLI (`gh skill`) operations for searching, previewing, installing, updating, and publishing Copilot agent skills. You MUST load this skill when working with the `gh skill` command.
+description: >-
+  Expert-level guidance on GitHub CLI (`gh skill`) operations for searching, previewing, installing, updating, and publishing Copilot agent skills.
+  You MUST load this skill when managing agent skills via the GitHub CLI.
 ---
 <!-- markdownlint-disable MD013 MD023 MD031 MD032 -->
-# gh-skill
+# Agent Skills CLI (gh-skill)
 
-Manage GitHub Copilot agent skills directly via the `gh skill` CLI command.
+Manage GitHub Copilot agent skills directly via the `gh skill` CLI command. This tool automates the installation, discovery, and management of skills adhering to the Agent Skills open standard.
 
 ## Core Principles
 
 - **Non-Interactive Execution**: Always use specific arguments or non-interactive flags (`--all`, `--dry-run`) when running `gh skill` commands to avoid stalling the agent with interactive prompts.
-- **Pre-flight Inspection**: Always inspect third-party skills using `gh skill preview` before installing to verify content safety and avoid malicious instructions or scripts.
-- **Supply Chain Integrity**: Prefer pinning skills to specific tags or commit SHAs to ensure deterministic behavior. `gh skill` uses content-addressed change detection (git tree SHAs) to detect real content changes during updates.
-- **Portable Provenance**: When installing, `gh skill` writes tracking metadata (repository, ref, tree SHA) directly into the `SKILL.md` frontmatter, allowing agents and users to track changes even if files are moved.
+- **Pre-flight Inspection**: Always inspect third-party skills using `gh skill preview` before installing to verify content safety.
+- **Supply Chain Integrity**: Prefer pinning skills to specific tags or commit SHAs via the `--pin` flag to ensure deterministic behavior.
+- **Automated Metadata**: `gh skill` automatically writes tracking metadata (repository, ref, tree SHA) into the `SKILL.md` frontmatter during installation.
+
+## Core Process
+
+1. **Discovery & Inspection**: Use `gh skill search` to find skills and `gh skill preview` to review their content and requirements BEFORE installation.
+2. **Installation**: Use `gh skill install` to add skills from external repositories.
+3. **Management**: Use `gh skill update` to keep skills current and `gh skill publish` to share your own skills.
 
 ## Commands / Usage Patterns
 
@@ -29,17 +37,14 @@ Manage GitHub Copilot agent skills directly via the `gh skill` CLI command.
   `gh skill install <owner>/<repository> <skill-name>@abc123def`
 - **Install and Pin**:
   `gh skill install <owner>/<repository> <skill-name> --pin v1.2.0`
-  `gh skill install <owner>/<repository> <skill-name> --pin abc123def`
 - **Install for Specific Agent/Scope**:
   `gh skill install <owner>/<repository> <skill-name> --agent claude-code --scope user`
 - **Update Skills**:
   `gh skill update <skill-name>`
   `gh skill update --all` (Non-interactive)
 - **Publish/Validate Skills**:
-  `gh skill publish` (Validates against spec, checks security settings, and offers to enable immutable releases)
+  `gh skill publish` (Validates against spec and checks security settings)
   `gh skill publish --fix` (Auto-fixes metadata issues)
-- **Usage**:
-  Run `gh skill --help` to see all available commands.
 
 ## Supported Agent Hosts
 
@@ -52,16 +57,22 @@ Manage GitHub Copilot agent skills directly via the `gh skill` CLI command.
 | Gemini CLI | `gemini` |
 | Antigravity | `antigravity` |
 
+## Diagnostics and Troubleshooting
+
+- If a skill isn't loading, verify the install path using `gh skill list`.
+- Verify that `gh skill` is authenticated and up to date (version 2.90.0+) if commands fail.
+- Check `gh skill status` (if available) to see the health of installed skills.
+
 ## What to Avoid
 
-- Running `gh skill install` or `gh skill update` without arguments, as this launches interactive prompts.
+- Running `gh skill install` or `gh skill update` without arguments (launches interactive prompts).
 - Using `@VERSION` and `--pin` simultaneously (they are mutually exclusive).
-- Installing unverified third-party skills that request `shell` or `bash` in `allowed-tools` without rigorous manual review.
+- Installing unverified third-party skills that request broad permissions without review.
 
 ## Limitations
 
 - The `gh skill` command requires GitHub CLI version 2.90.0 or later.
-- Third-party skills are not verified by GitHub and may contain prompt injections or malicious scripts; inspect before installation.
+- Third-party skills are not verified by GitHub and may contain malicious content; always preview.
 
 ## References
 
@@ -70,5 +81,7 @@ Manage GitHub Copilot agent skills directly via the `gh skill` CLI command.
 
 ## Related Skills
 
-- **agentskills**
-  You MUST load this skill when working with specification and documentation for Agent Skills.
+- **agentskills**:
+  You MUST load this skill for deep understanding of the Agent Skills open standard and manual skill creation.
+- **skill-writer**:
+  You MUST load this skill when developing new skills to be published via `gh skill`.
