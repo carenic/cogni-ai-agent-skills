@@ -72,7 +72,7 @@ Refs: <https://github.github.com/gh-aw/reference/auth/>
 Frequently encountered issues when working with GitHub Agentic Workflows and their solutions:
 
 - **Extension Installation Fails**: If `gh extension install github/gh-aw` fails, use the standalone installer: `curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash`.
-- **Custom Actions Not Allowed**: Enterprise policies may restrict `github/gh-aw/actions/setup`. An admin must allow `github/gh-aw@*` in Organization Settings -> Actions -> Policies.
+- **Custom Actions Not Allowed**: Enterprise policies may restrict `github/gh-aw/actions/setup-cli`. An admin must allow `github/gh-aw@*` in Organization Settings -> Actions -> Policies.
 - **Frontmatter Silently Ignored**: The compiler does not warn about unknown field names. Check for typos: `agent:` (use `engine:`), `mcp-servers:` (use `tools:`), `timeout:` (use `timeout-minutes:`).
 - **Write Operations Fail**: All writes (issues, comments, PRs) must be declared in `safe-outputs`. If `create-issue` is not working, check if `staged: true` is blocking it (set to `false` for immediate creation).
 
