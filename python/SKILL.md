@@ -52,3 +52,11 @@ for name, path in files.items():
     print()
 PY
 ```
+
+### Read Specific Line Range
+
+Use this pattern when you need to extract and print a specific slice of lines from a file.
+
+```bash
+python3 -c "import sys; print(''.join(open('<file-path>').readlines()[140:160]))"
+```
