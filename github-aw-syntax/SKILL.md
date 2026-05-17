@@ -165,6 +165,29 @@ Reference for GitHub Agentic Workflows frontmatter schema, engines, networking, 
   - Never commit plaintext secrets
   - For reusable workflows, use `jobs.<job_id>.secrets` instead
 
+### Frontmatter Elements - Trigger Events (`on:`)
+
+Below is a comprehensive reference to all available frontmatter fields for GitHub Agentic Workflows.
+
+The `on:` section uses standard GitHub Actions syntax to define workflow triggers, with additional fields for security and approval controls:
+
+- Standard GitHub Actions triggers (push, pull_request, issues, schedule, etc.)
+- `reaction:` - Add emoji reactions to triggering items
+- `status-comment:` - Post a started/completed comment with a workflow run link (automatically enabled for `slash_command` and `label_command` triggers; must be explicitly set to `true` for other trigger types). Accepts a boolean or an object with optional `issues`, `pull-requests`, and `discussions` toggle fields to selectively disable status comments for specific target types.
+- `stop-after:` - Automatically disable triggers after a deadline
+- `manual-approval:` - Require manual approval using environment protection rules
+- `forks:` - Configure fork filtering for pull_request triggers
+- `skip-roles:` - Skip workflow execution for specific repository roles
+- `skip-bots:` - Skip workflow execution for specific GitHub actors
+- `skip-author-associations:` - Skip execution for configured event + `author_association` combinations
+- `skip-if-match:` - Skip execution when a search query has matches (supports `scope: none`; use top-level `on.github-token` / `on.github-app` for custom auth)
+- `skip-if-no-match:` - Skip execution when a search query has no matches (supports `scope: none`; use top-level `on.github-token` / `on.github-app` for custom auth)
+- `steps:` - Inject custom deterministic steps into the pre-activation job (saves one workflow job vs. multi-job pattern)
+- `permissions:` - Grant additional GitHub token scopes to the pre-activation job (for use with `on.steps:` API calls)
+- `needs:` - Add custom job dependencies that both `pre_activation` and `activation` must wait for
+- `github-token:` - Custom token for activation job reactions, status comments, and skip-if search queries
+- `github-app:` - GitHub App for minting a short-lived token used by the activation job and all skip-if search steps
+
 ### Agentic Workflow Specific Fields
 
 - **`description:`** - Human-readable workflow description (string)
@@ -1101,3 +1124,5 @@ safe-outputs:
 - [AI Engines (aka Coding Agents)](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/reference/engines.md)
 - [gh-aw Syntax Reference](https://github.com/github/gh-aw/blob/v0.74.3/.github/aw/syntax.md)
 - [gh-aw Engines Reference](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/reference/engines.md)
+- [Frontmatter reference](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/reference/frontmatter.md)
+- [Triggers](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/reference/triggers.md)
