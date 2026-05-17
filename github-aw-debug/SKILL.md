@@ -85,11 +85,11 @@ Comprehensive reference of error messages in GitHub Agentic Workflows, including
 
 ## References
 
-- <https://github.github.com/gh-aw/troubleshooting/common-issues/>
-- <https://github.github.com/gh-aw/troubleshooting/debug-ghe/>
-- <https://github.github.com/gh-aw/troubleshooting/debugging/>
-- <https://github.github.com/gh-aw/troubleshooting/errors/>
-- <https://github.com/github/gh-aw/tree/v0.74.3/docs/src/content/docs/troubleshooting>
+- [Common Issues](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/troubleshooting/common-issues.md)
+- [Debugging GHE Cloud with Data Residency](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/troubleshooting/debug-ghe.md)
+- [Debugging Workflows](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/troubleshooting/debugging.md)
+- [Error Reference](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/troubleshooting/errors.md)
+- [Troubleshooting](https://github.com/github/gh-aw/tree/v0.74.3/docs/src/content/docs/troubleshooting)
 
 ## Related Skills
 
