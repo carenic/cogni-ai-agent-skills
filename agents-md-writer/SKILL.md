@@ -124,6 +124,7 @@ native file and `AGENTS.md` when both are present.
 
 - `# AGENTS.md (subdir-specific)`
 - `## Setup & Environment Invariants`
+- `## Prerequisites` (Organizational, Technical)
 - `## Requirements`
 - `## Key Files & Context Injection`
 - `## Agent Directives (Contract Style)`
@@ -138,6 +139,7 @@ native file and `AGENTS.md` when both are present.
 - `## Final Assurance Gates`
   - Keep this file entropy-pruned and up-to-date.
   - Inject full content into every sub-agent context.
+- `## Validation checklist`
 - `## Troubleshooting Matrix`
   > signature error / smell
   - root-cause vector
