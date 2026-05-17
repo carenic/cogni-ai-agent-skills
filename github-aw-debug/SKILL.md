@@ -115,7 +115,7 @@ Comprehensive reference of common error messages in GitHub Agentic Workflows:
 
 - Use `--verbose` flag for detailed error information
 - Validate YAML syntax and check file paths
-- Consult the [frontmatter reference](/gh-aw/reference/frontmatter-full/)
+- Consult the frontmatter reference.
 - Run `gh aw compile` frequently to catch errors early
 - Use `--strict` flag to catch security issues early
 - Test incrementally: add one feature at a time
@@ -126,6 +126,7 @@ Comprehensive reference of common error messages in GitHub Agentic Workflows:
 - [Debugging GHE Cloud with Data Residency](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/troubleshooting/debug-ghe.md)
 - [Debugging Workflows](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/troubleshooting/debugging.md)
 - [Error Reference](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/troubleshooting/errors.md)
+- [Frontmatter reference](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/reference/frontmatter.md)
 - [Troubleshooting](https://github.com/github/gh-aw/tree/v0.74.3/docs/src/content/docs/troubleshooting)
 
 ## Related Skills
