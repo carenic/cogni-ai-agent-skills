@@ -1121,8 +1121,7 @@ safe-outputs:
 
 ## References
 
-- [AI Engines (aka Coding Agents)](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/reference/engines.md)
 - [gh-aw Syntax Reference](https://github.com/github/gh-aw/blob/v0.74.3/.github/aw/syntax.md)
 - [gh-aw Engines Reference](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/reference/engines.md)
-- [Frontmatter reference](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/reference/frontmatter.md)
+- [Frontmatter Reference](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/reference/frontmatter.md)
 - [Triggers](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/reference/triggers.md)
