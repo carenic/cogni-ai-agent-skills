@@ -67,12 +67,67 @@ Refs: <https://github.github.com/gh-aw/reference/auth/>
 - `gh aw` commands may require `actions: read` permissions when used inside GitHub Actions workflows.
 - Cannot debug local scripts unrelated to GitHub Agentic Workflows via `gh aw` tooling.
 
+## Common Issues
+
+Frequently encountered issues when working with GitHub Agentic Workflows and their solutions:
+
+- **Extension Installation Fails**: If `gh extension install github/gh-aw` fails, use the standalone installer: `curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash`.
+- **Custom Actions Not Allowed**: Enterprise policies may restrict `github/gh-aw/actions/setup-cli`. An admin must allow `github/gh-aw@*` in Organization Settings -> Actions -> Policies.
+- **Frontmatter Silently Ignored**: The compiler does not warn about unknown field names. Check for typos: `agent:` (use `engine:`), `mcp-servers:` (use `tools:`), `timeout:` (use `timeout-minutes:`).
+- **Write Operations Fail**: All writes (issues, comments, PRs) must be declared in `safe-outputs`. If `create-issue` is not working, check if `staged: true` is blocking it (set to `false` for immediate creation).
+
+## Debugging GHE Cloud with Data Residency
+
+Step-by-step guide for setting up and debugging agentic workflows on GitHub Enterprise Cloud with data residency (*.ghe.com):
+
+1. **Configure Engine (Critical)**: Set `api-target` in frontmatter to point to your enterprise's Copilot API subdomain:
+    ```yaml
+    engine:
+      id: "copilot"
+      api-target: "copilot-api.yourorg.ghe.com"
+    ```
+2. **Authenticate CLI**: Use `GH_HOST=yourorg.ghe.com gh auth login` to target the correct instance.
+3. **Compile with Host**: Always use `GH_HOST=yourorg.ghe.com gh aw compile <workflow>` to ensure the correct domains are auto-added to the firewall allow-list.
+4. **Local Diagnostic**: Launch `GH_HOST=yourorg.ghe.com copilot` and use `/agent agentic-workflows` to test authentication and run audits from your machine.
+
+## Debugging Workflows
+
+How to run, debug, and investigate agentic workflow failures using the Copilot CLI, `gh aw audit`, and log analysis:
+
+- **AI-Assisted Debugging (Recommended)**: Launch the Copilot CLI (`copilot`), load the `agentic-workflows` agent with `/agent`, and ask: `Debug this workflow run: <RUN_URL>`.
+- **Comprehensive Audit**: Run `gh aw audit <run-id> --parse` to get a structured markdown report including failure analysis, tool usage, MCP status, and firewall denials.
+- **Multi-Run Analysis**: Use `gh aw logs <workflow-name> --firewall --safe-output` to identify recurring network blocks or behavioral patterns across multiple runs.
+- **Verbose Logging**: Set `DEBUG=*` for CLI commands to see internal processing logs. In GitHub Actions, set the repository secret `ACTIONS_STEP_DEBUG=true` for detailed step-level logs.
+- **Inspect Artifacts**: Download run artifacts to find `prompt.txt` (the exact prompt sent to the AI), `agent-stdio.log` (raw interaction logs), and `firewall-logs/access.log`.
+
+## Error Reference
+
+Comprehensive reference of common error messages in GitHub Agentic Workflows:
+
+- **`frontmatter not properly closed`**: Missing the closing `---` delimiter at the end of the YAML section.
+- **`Authentication failed` / `403 unauthorized`**: The `COPILOT_GITHUB_TOKEN` is invalid or the account lacks a Copilot license seat.
+- **`DENIED CONNECT <domain>:443`**: The firewall blocked a network request. Add the domain or ecosystem shorthand (e.g., `node`, `python`) to `network: allowed:`.
+- **`cannot use 'command' with 'issues'`**: Conflicting triggers detected. The `command:` configuration handles issue/PR events automatically; remove the redundant `on: issues` block.
+- **`strict mode: wildcard '*' is not allowed`**: Public repositories require strict mode, which forbids standalone wildcards in network configuration. Use specific domains or patterns (e.g., `*.github.com`).
+- **`tool <name> missing required 'url' field`**: HTTP MCP server configuration is incomplete. Add the `url:` field.
+
+## Troubleshooting Tips
+
+- Use `--verbose` flag for detailed error information
+- Validate YAML syntax and check file paths
+- Consult the frontmatter reference.
+- Run `gh aw compile` frequently to catch errors early
+- Use `--strict` flag to catch security issues early
+- Test incrementally: add one feature at a time
+
 ## References
 
-- <https://github.github.com/gh-aw/troubleshooting/common-issues/>
-- <https://github.github.com/gh-aw/troubleshooting/debug-ghe/>
-- <https://github.github.com/gh-aw/troubleshooting/debugging/>
-- <https://github.github.com/gh-aw/troubleshooting/errors/>
+- [Common Issues](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/troubleshooting/common-issues.md)
+- [Debugging GHE Cloud with Data Residency](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/troubleshooting/debug-ghe.md)
+- [Debugging Workflows](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/troubleshooting/debugging.md)
+- [Error Reference](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/troubleshooting/errors.md)
+- [Frontmatter reference](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/reference/frontmatter.md)
+- [Troubleshooting](https://github.com/github/gh-aw/tree/v0.74.3/docs/src/content/docs/troubleshooting)
 
 ## Related Skills
 
