@@ -132,7 +132,7 @@ mindmap
 
 ## References
 
-- [gh-aw Documentation](https://github.com/github/gh-aw/)
+- [GitHub Agentic Workflows](https://gh.io/gh-aw)
 - [Official gh-aw Repo](https://github.com/github/gh-aw)
 - [gh-aw Runbook](https://github.com/github/gh-aw/blob/v0.74.3/.github/aw/runbooks/workflow-health.md)
 - [Maintaining Repositories](https://github.com/github/gh-aw/blob/v0.74.3/docs/src/content/docs/practices/maintaining-repos.md)
